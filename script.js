@@ -88,4 +88,44 @@ function closeMobileNav() {
 }
 
 /*info*/
+function toggleAccordion(itemId) {
+  // Find the clicked accordion item by its id
+  var clickedItem = document.getElementById(itemId);
+
+  // Check if this item is already open
+  var isOpen = clickedItem.classList.contains('open');
+
+  // Close ALL accordion items first
+  // (this ensures only one is open at a time)
+  var allItems = document.querySelectorAll('.accordion-item');
+  allItems.forEach(function (item) {
+    item.classList.remove('open');
+
+    // Update the aria-expanded attribute for accessibility
+    // (screen readers use this to know if the dropdown is open)
+    var header = item.querySelector('.accordion-header');
+    if (header) {
+      header.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // If the item was NOT already open, open it now
+  // (If it WAS open, it's now closed — clicking an open item closes it)
+  if (!isOpen) {
+    clickedItem.classList.add('open');
+
+    // Update accessibility attribute
+    var header = clickedItem.querySelector('.accordion-header');
+    if (header) {
+      header.setAttribute('aria-expanded', 'true');
+    }
+
+    // Smooth scroll so the opened item is visible in the viewport
+    // with a short delay to let the animation start first
+    setTimeout(function () {
+      clickedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+}
+
 /*info*/
