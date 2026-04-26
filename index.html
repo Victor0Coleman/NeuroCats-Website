@@ -92,11 +92,125 @@ Section#1:(TITLE AREA):
   </section>
 
 <!-- *****************************************************************
-    Section#2:(PHOTOS / GALLERY)
-    Positioned between the hero and "What We're About".
-    A grid of images showing the organization in action.
-    Replace the src="" with real image file paths or URLs.
+    Section 2:(PHOTOS / GALLERY)
+    - Positioned between the title and "What We are About".
+    - Displays a grid of images showing the organization in action.
+    - Replace the src="" with real image file paths or URLs.-> going to 
+        update this later just a place holder for now.
+    - Each image should be responsive and maintain its aspect ratio.
 *****************************************************************-->
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">Our Community in Action</h2>
+      <div class="section-underline"></div>
+      <p class="section-subtitle">Moments from our events, meetups, and community gatherings.</p>
+
+<!--*****************************************************************
+Going to include a slideshow for the images to swap b/w similar to the txst home page
+           SLIDESHOW — One photo visible at a time.
+           JavaScript in script.js drives the slide changes.
+
+           HOW TO ADD REAL PHOTOS:
+            (Will need to update this later potentially)
+                Replace each <div class="photo-placeholder">...</div>
+                inside a .slide with an <img> tag, like:
+                <img src="event-photo.jpg" alt="Community Event" />
+
+            Contains:
+                wrapper indicator - holds left arrow + slide track + right arrow.
+                Generated dots — one per slide; clicking goes to that slide. Dots 
+                    are generated automatically by script.js
+                display label - showing the name of the current slide.
+            Slides:
+                left arrow - calls goPrev() in script.js
+                slide track - that keeps all slides in a horizontal line.
+                SLIDE ROW - all slides in a horizontal line.script.js shifts this element left with translateX to change slides.
+                    id="slidesRow" is used by script.js to find this element.
+                right arrow - calls goNext() in script.js
+                slides 1-6
+*****************************************************************-->
+      <div class="slideshow-wrapper" id="slideshow">
+
+        <!-- <LEFT ARROW> -->
+        <button class="slideshow-arrow slideshow-arrow-prev"
+                onclick="slideshowPrev()"
+                aria-label="Previous slide">&#8249;</button>
+
+        <!-- <SLIDE TRACK> -->
+        <div class="slideshow-track">
+
+          <!-- <SLIDE ROW> -->
+          <div class="slides-row" id="slidesRow">
+
+            <!-- <Slide 1> -->
+            <div class="slide" id="slide-0">
+              <!-- Replace the placeholder below with: <img src="event.jpg" alt="Community Event" /> -->
+              <div class="photo-placeholder">
+                <span>&#128247;</span>
+                <p>Community Event</p>
+              </div>
+            </div>
+
+            <!-- <Slide 2> -->
+            <div class="slide" id="slide-1">
+              <div class="photo-placeholder">
+                <span>&#128247;</span>
+                <p>Support Circle</p>
+              </div>
+            </div>
+
+            <!-- <Slide 3> -->
+            <div class="slide" id="slide-2">
+              <div class="photo-placeholder">
+                <span>&#128247;</span>
+                <p>Workshop Day</p>
+              </div>
+            </div>
+
+            <!-- <Slide 4> -->
+            <div class="slide" id="slide-3">
+              <div class="photo-placeholder">
+                <span>&#128247;</span>
+                <p>Volunteer Day</p>
+              </div>
+            </div>
+
+            <!-- <Slide 5>-->
+            <div class="slide" id="slide-4">
+              <div class="photo-placeholder">
+                <span>&#128247;</span>
+                <p>Annual Gathering</p>
+              </div>
+            </div>
+
+            <!-- <Slide 6> -->
+            <div class="slide" id="slide-5">
+              <div class="photo-placeholder">
+                <span>&#128247;</span>
+                <p>Milestone Celebration</p>
+              </div>
+            </div>
+
+          </div><!-- <end .slides-row> -->
+
+        </div><!-- <end .slideshow-track> -->
+
+        <!-- <RIGHT ARROW> -->
+        <button class="slideshow-arrow slideshow-arrow-next"
+                onclick="slideshowNext()"
+                aria-label="Next slide">&#8250;</button>
+
+      </div><!-- <end .slideshow-wrapper> -->
+
+      <!-- <DOT INDICATORS> -->
+      <div class="slideshow-dots" id="slideshowDots"></div>
+
+      <!-- <Label> -->
+      <p class="slide-label" id="slideLabel">Community Event</p>
+    </div>
+  </section>
+
 
 
 </body>    
