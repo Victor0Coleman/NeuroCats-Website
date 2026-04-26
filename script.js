@@ -70,6 +70,22 @@ function initNavbarScroll() {
   });
 }
 /*info*/
+function initHamburger() {
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+
+  // When the hamburger button is clicked...
+  hamburger.addEventListener('click', function () {
+    // Toggle the "open" class on the mobile nav list
+    // "open" class makes it visible (see styles.css .mobile-nav.open)
+    mobileNav.classList.toggle('open');
+  });
+}
 /*info*/
+function closeMobileNav() {
+  var mobileNav = document.getElementById('mobileNav');
+  mobileNav.classList.remove('open');
+}
+
 /*info*/
 /*info*/
