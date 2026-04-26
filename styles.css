@@ -385,3 +385,56 @@ TITLE SECTION
   font-size: 0.95rem;                               /* Card paragraph font size */
   line-height: 1.7;                                 /* Card paragraph line height */
 }
+/* ============================================================
+   WHY JOIN SECTION
+   Light blue background with a 3×2 grid of benefit items.
+============================================================ */
+
+.why-join {
+  padding: 80px 0;                          /* Vertical padding for the why join section */
+  background-color: var(--color-secondary); /* Light blue background */
+}
+
+/* Grid of 6 benefit items — 3 columns on desktop */
+.benefits-grid {
+  display: grid;                            /* Grid layout for benefit items */
+  grid-template-columns: repeat(3, 1fr);    /* 3 equal columns */
+  gap: 24px;                                /* Space between benefit items */
+}
+
+/* Individual benefit box */
+.benefit-item {
+  background: var(--color-white);           /* White background for benefit items */
+  border-radius: var(--border-radius);      /* Rounded corners for benefit items */
+  padding: 28px 24px;                       /* Padding inside benefit items */
+  text-align: center;                       /* Center text inside benefit items */
+  box-shadow: var(--shadow);                /* Shadow for benefit items */
+  transition: var(--transition);            /* Transition for benefit items */
+}
+
+.benefit-item:hover {
+  transform: translateY(-4px);               /* Lift effect on hover */
+  box-shadow: var(--shadow-hover);           /* Shadow effect on hover */
+}
+
+/* Benefit emoji/icon */
+.benefit-icon {
+  font-size: 2.4rem;                        /* Large icon size */
+  margin-bottom: 14px;                      /* Space below icon */
+}
+
+/* Benefit heading */
+.benefit-item h3 {
+  font-size: 1.1rem;                        /* Card heading font size */
+  font-weight: 700;                         /* Card heading font weight */
+  color: var(--color-primary);              /* Card heading color */
+  margin-bottom: 8px;                       /* Space below heading */
+}
+
+/* Benefit description */
+.benefit-item p {
+  font-size: 0.9rem;                        /* Card paragraph font size */
+  color: var(--color-text-light);           /* Card paragraph text color */
+  line-height: 1.6;                         /* Card paragraph line height */
+}
+
