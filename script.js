@@ -129,3 +129,38 @@ function toggleAccordion(itemId) {
 }
 
 /*info*/
+function handleFormSubmit(event) {
+  // Prevent the page from reloading (default form behavior)
+  event.preventDefault();
+
+  // Get references to the form and success message elements
+  var form = document.getElementById('contactForm');
+  var successMessage = document.getElementById('formSuccess');
+  var submitButton = form.querySelector('button[type="submit"]');
+
+  // Show a loading state on the button while "sending"
+  submitButton.textContent = 'Sending...';
+  submitButton.disabled = true;
+
+  // Simulate a brief delay (as if sending to a server)
+  // In a real app, you would make an API call here
+  setTimeout(function () {
+
+    // Show the success message
+    successMessage.classList.add('visible');
+
+    // Reset the form fields back to empty
+    form.reset();
+
+    // Reset the button back to its original text
+    submitButton.textContent = 'Send Message';
+    submitButton.disabled = false;
+
+    // Hide the success message after 6 seconds
+    setTimeout(function () {
+      successMessage.classList.remove('visible');
+    }, 6000);
+
+  }, 1200); // 1.2 second simulated delay
+}
+/**/
