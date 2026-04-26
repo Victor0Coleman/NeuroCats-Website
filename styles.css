@@ -438,3 +438,131 @@ TITLE SECTION
   line-height: 1.6;                         /* Card paragraph line height */
 }
 
+/* ============================================================
+   SUPPORT SECTION (ACCORDION / DROPDOWNS)
+   Each support type is an "accordion item."
+   Clicking the header toggles the body open/closed.
+   JavaScript (in script.js) adds/removes the "open" class.
+============================================================ */
+
+.support {
+  padding: 80px 0;                      /* Vertical padding for the support section */
+  background-color: var(--color-white); /* White background */
+}
+
+/* Container that holds all accordion items */
+.support-accordion {
+  max-width: 720px;                     /* Maximum width for the accordion container */
+  margin: 0 auto;                       /* Center the accordion container */
+  display: flex;                        /* Use flexbox for layout */
+  flex-direction: column;               /* Stack items vertically */
+  gap: 16px;                            /* Space between accordion items */
+}
+
+/* One accordion item = header + body */
+.accordion-item {
+  border-radius: var(--border-radius);      /* Rounded corners for accordion items */
+  border: 1.5px solid var(--color-border);  /* Border for accordion items */
+  overflow: hidden;                         /* Hides body when collapsed */
+  box-shadow: var(--shadow);                /* Shadow for accordion items */
+  transition: var(--transition);            /* Transition for accordion items */
+}
+
+/* Slight lift on hover */
+.accordion-item:hover {                     
+  box-shadow: var(--shadow-hover);          /* Shadow effect on hover */
+}
+
+/* Clickable header button for each accordion item */
+.accordion-header {
+  width: 100%;                              /* Full width */
+  display: flex;                            /* Flexbox for alignment */
+  align-items: center;                      /* Center items vertically */
+  gap: 14px;                                /* Space between items */
+  padding: 20px 24px;                       /* Padding inside header */
+  background: var(--color-white);           /* White background */
+  border: none;                             /* No border */
+  cursor: pointer;                          /* Shows pointer cursor on hover */
+  text-align: left;                         /* Align text to the left */
+  font-size: 1.08rem;                       /* Font size for header */
+  font-weight: 600;                         /* Font weight for header */
+  color: var(--color-text);                 /* Text color for header */
+  transition: var(--transition);            /* Transition for header */
+}
+
+/* Header background when hovered */
+.accordion-header:hover {
+  background-color: var(--color-secondary); /* Background color on hover */
+}
+
+/* Header background when the accordion is open */
+.accordion-item.open .accordion-header {
+  background-color: var(--color-primary);   /* Background color when open */
+  color: var(--color-white);                /* Text color when open */
+}
+
+/* Emoji icon in the header */
+.accordion-icon {
+  font-size: 1.5rem;                        /* Font size for emoji icon */
+  flex-shrink: 0;                           /* Won't shrink if space is tight */
+}
+
+/* Label text in the header */
+.accordion-label {
+  flex: 1;                                  /* Takes up remaining space */
+}
+
+/* Arrow icon — rotates 180° when accordion is open */
+.accordion-arrow {
+  font-size: 0.75rem;                       /* Font size for arrow icon */
+  transition: transform 0.3s ease;          /* Smooth rotation transition */
+  color: var(--color-text-light);           /* Color for arrow icon */
+}
+
+/* When open, arrow rotates to point up */
+.accordion-item.open .accordion-arrow {
+  transform: rotate(180deg);                 /* Rotate arrow */
+  color: rgba(255, 255, 255, 0.8);         /* Lighter color when open */
+}
+
+/* The collapsible body — hidden by default */
+.accordion-body {
+  max-height: 0;                            /* Collapsed = 0 height */
+  overflow: hidden;                         /* Hide content when collapsed */
+  transition: max-height 0.4s ease;         /* Smooth expand/collapse animation */
+  background-color: #fafbff;              /* Background color for body */
+}
+
+/* When accordion is open, body expands (JS sets max-height dynamically) */
+.accordion-item.open .accordion-body {
+  max-height: 400px;                        /* Enough to show all content */
+}
+
+/* Padding inside the accordion body content */
+.accordion-content {
+  padding: 20px 24px;                       /* Padding inside content */
+  border-top: 1px solid var(--color-border);/* Border on top of content */
+}
+
+/* Paragraph inside accordion body */
+.accordion-content p { 
+  color: var(--color-text);                 /* Text color for paragraphs */
+  margin-bottom: 14px;                      /* Space below paragraphs */
+  font-size: 0.95rem;                       /* Font size for paragraphs */
+  line-height: 1.7;                         /* Line height for paragraphs */
+}
+
+/* Bullet list inside accordion body */
+.accordion-content ul {
+  list-style: disc;                         /* Show bullet points inside accordion */
+  padding-left: 20px;                       /* Indent bullet points */
+  display: flex;                            /* Use flexbox for layout */
+  flex-direction: column;                   /* Stack items vertically */
+  gap: 6px;                                 /* Space between list items */
+}
+
+.accordion-content li {
+  color: var(--color-text-light);           /* Text color for list items */
+  font-size: 0.92rem;                       /* Font size for list items */
+}
+
