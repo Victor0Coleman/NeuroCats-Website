@@ -91,11 +91,11 @@ img {
 
 /* Section title — large heading in the center of each section */
 .section-title {
-  text-align: center;                     /* Center the title text */
-  font-size: clamp(1.6rem, 3vw, 2.2rem);  /* Scales with screen size */
-  font-weight: 700;                       /* Bold font weight */
-  color: var(--color-primary);            /* Main color for section titles */
-  margin-bottom: 12px;                    /* Space below section titles */  
+  text-align: center;                   /* Center the title text */
+  font-size: clamp(1.6rem, 3vw, 2.2rem);/* Scales with screen size */
+  font-weight: 700;                     /* Bold font weight */
+  color: var(--color-primary);          /* Main color for section titles */
+  margin-bottom: 12px;                  /* Space below section titles */  
 }
 
 /* Decorative underline beneath section titles */
@@ -114,4 +114,54 @@ img {
   max-width: 600px;                     /* Limit subtitle width */
   margin: 0 auto 40px;                  /* Center the subtitle and add space below */
   font-size: 1rem;
+}
+
+/* ============================================================
+   BUTTONS
+   .btn is the base button class.
+   .btn-primary is filled/colored. .btn-white is outlined.
+   .btn-full makes the button stretch full-width.
+============================================================ */
+
+.btn {
+  display: inline-block;                /* Base button styling */
+  padding: 14px 32px;                   /* Button padding */
+  border-radius: 50px;                  /* Pill-shaped button */
+  font-weight: 600;                     /* Semi-bold font weight */
+  font-size: 1rem;                      /* Base font size */
+  cursor: pointer;                      /* Pointer cursor on hover */
+  border: none;                         /* No border */
+  transition: var(--transition);        /* Standard smooth transition for animations */
+  text-align: center;                   /* Center text alignment */
+}
+
+/* Filled blue button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Filled blue button hover: darker blue + subtle lift */
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);      /* Darker blue */
+  transform: translateY(-2px);                      /* Subtle lift effect */
+  box-shadow: 0 6px 20px rgba(44, 111, 173, 0.4); /* Soft shadow for depth */
+}
+
+/* White button — used on colored backgrounds */
+.btn-white {
+  background-color: var(--color-white);             /* White background */
+  color: var(--color-primary);                      /* Main color for text */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);      /* Subtle shadow for depth */
+}
+
+/* White button hover */
+.btn-white:hover {
+  transform: translateY(-2px);                      /* Subtle lift effect */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);      /* Deeper shadow for depth */
+}
+
+/* Full-width button */
+.btn-full {
+  width: 100%;                                      /* Full-width button */
 }
