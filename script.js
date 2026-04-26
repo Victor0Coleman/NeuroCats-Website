@@ -20,4 +20,37 @@
              the DomContentLoaded event.
         • Functions called by HTML elements via onclick = "functionName()".
     */
-   
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Start all features (Sets up all event listeners and observers)
+  initNavbarScroll();     // Makes the navbar shrink when scrolled
+  initHamburger();        // Sets up the mobile menu toggle
+  initSlideshow();        // Sets up the photo slideshow
+  initScrollAnimations(); // Fades in sections as user scrolls down
+});   
+
+/* Total number of slides — update if you add/remove slides */
+var SLIDE_COUNT = 6;
+
+/* Labels shown below the dots for each slide (index must match HTML) */
+var SLIDE_LABELS = [
+  'Community Event',
+  'Individual Support',
+  'Group Support',
+  'Social Engagement',
+  'Work shops',
+  'Professional Development'
+];
+
+/* Track current showing Slide (starts at 0) */
+var currentSlide = 0;
+
+/* Holds reference to auto-shift timer */
+var slideshowTimer = null;
+
+function initSlideshow() {
+  /* Creates dot indicators dynamically to match each slide */
+  buildSlideshowDots();
+  /* Start the auto-shifter: moves to next slide every 4 seconds */
+  startSlideshowTimer();
+}
