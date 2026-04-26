@@ -27,7 +27,7 @@
     <div class="nav-container">
       <div class="nav-logo">Our Organization
       </div>
-      <!-- Navigation links — each href="#sectionId" scrolls to that section -->
+      <!-- Navigation links-->
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -37,6 +37,31 @@
         <li><a href="#apply">Apply</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
+      <!-- <Hamburger button>
+             — Only shows on mobile screens so not really needed but
+                just in case for future use
+             - (dropdown menu)Hidden by default, shown when hamburger is clicked
+        -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
+    </div>
+
+    <!-- Dropdown menu(Mobile) -->
+    <ul class="mobile-nav" id="mobileNav">
+      <li><a href="#home" onclick="closeMobileNav()">Home</a></li>
+      <li><a href="#about" onclick="closeMobileNav()">About</a></li>
+      <li><a href="#why-join" onclick="closeMobileNav()">Why Join</a></li>
+      <li><a href="#support" onclick="closeMobileNav()">Support</a></li>
+      <li><a href="#gallery" onclick="closeMobileNav()">Gallery</a></li>
+      <li><a href="#apply" onclick="closeMobileNav()">Apply</a></li>
+      <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+    </ul>
+  </nav>
+
 
 </body>    
 </html>
