@@ -315,7 +315,11 @@ SECTION 3: WHY YOU SHOULD JOIN US
     SECTION 4: TYPES OF SUPPORT
         - Four support categories, each with a clickable dropdown.
         - Clicking a card header reveals/hides details about that support type.
-        - The dropdown logic is controlled in script.js.    
+        - The dropdown logic is controlled in script.js.
+        Container:
+              - The "accordion-item" class wraps each dropdown.
+              - The "accordion-header" is the clickable part.
+              - The "accordion-body" is hidden until clicked.
 ***************************************************************** -->
 
   <section class="support" id="support">
@@ -327,6 +331,114 @@ SECTION 3: WHY YOU SHOULD JOIN US
       <!-- Support accordion container -->
       <div class="support-accordion">
 
+        <!-- SUPPORT TYPE 1: Individualized Support -->
+        <div class="accordion-item" id="support-1">
+          <button class="accordion-header" onclick="toggleAccordion('support-1')" aria-expanded="false">
+            <!-- Icon and label -->
+            <span class="accordion-icon">&#128149;</span>
+            <span class="accordion-label">Individualized Support</span>
+            <!-- Arrow icon that rotates when open -->
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+        <!-- Hidden content — shown when the header is clicked -->
+          <div class="accordion-body" id="support-1-body">
+            <div class="accordion-content">
+              <p>
+                Neurocats offers Individualized supports through one-on-one and small group coaching.
+                Students can choose to meet for one-on-one coaching weekly, Bi-monthly, or monthly
+                depending on their support needs. Group coaching is offered two times per week.
+                </p>
+              <p>Coaching topics address the seven domains of student success at TXST:</p>
+              <ul>
+                <li>Academic Pathways</li>
+                <li>Career Related Engagement</li>
+                <li>Community Engagement</li>
+                <li>Indidual Connections</li>
+                <li>Health & Well-Being</li>
+                <li>Positive Interdependence</li>
+                <li>Basic Needs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUPPORT TYPE 2: Social Engagement -->
+        <div class="accordion-item" id="support-2">
+          <button class="accordion-header" onclick="toggleAccordion('support-2')" aria-expanded="false">
+            <span class="accordion-icon">&#129504;</span>
+            <span class="accordion-label">Social Engagement</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+
+          <div class="accordion-body" id="support-2-body">
+            <div class="accordion-content">
+              <p>
+                Building a community is an essential part of NeuroCats. 
+                Multiple social events are scheduled each week to 
+                promote community engagement. Students participate 
+                in the brainstorming, planning, and facilitation of events.
+              </p>
+              <p>
+                Students are invited to engage at the level that feels most 
+                comfortable for them whether that means leading a discussion,  
+                contributing occasionally, or simply observing from the doorway.
+              </p>
+              <p>Examples of social events include:</p>
+              <ul>
+                <li>monthly UNO Tournament</li>
+                <li>Board Games</li>
+                <li>Coloring and Cat Videos</li>
+                <li>Art Space</li>
+                <li>Movies</li>
+                <p>Share your special interest.</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUPPORT TYPE 3: Workshops-->
+        <div class="accordion-item" id="support-3">
+          <button class="accordion-header" onclick="toggleAccordion('support-3')" aria-expanded="false">
+            <span class="accordion-icon">&#128176;</span>
+            <span class="accordion-label">Workshops</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+
+          <div class="accordion-body" id="support-3-body">
+            <div class="accordion-content">
+              <p>
+                Monthly workshops are facilitated by campus and community experts 
+                based on the topics suggested by students. All workshops are open to the 
+                campus community.
+              </p>
+              <p>Example topics include:</p>
+              <ul>
+                <li>Career Preparation</li>
+                <li>Study strategies and skills</li>
+                <li>Time management</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUPPORT TYPE 4: Professional Development -->
+        <div class="accordion-item" id="support-4">
+          <button class="accordion-header" onclick="toggleAccordion('support-4')" aria-expanded="false">
+            <span class="accordion-icon">&#127968;</span>
+            <span class="accordion-label">Professional Development</span>
+            <span class="accordion-arrow">&#9660;</span>
+          </button>
+
+          <div class="accordion-body" id="support-4-body">
+            <div class="accordion-content">
+              <p>
+                Customized presentations on supporting neurodivergent
+                students are available upon request, with content adapted
+                to best serve the audience's interest and objectives.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
