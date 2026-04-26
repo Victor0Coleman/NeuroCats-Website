@@ -164,3 +164,45 @@ function handleFormSubmit(event) {
   }, 1200); // 1.2 second simulated delay
 }
 /**/
+function initScrollAnimations() {
+  // List of elements to animate as they appear
+  var animatedElements = document.querySelectorAll(
+    '.about-card, .benefit-item, .gallery-item, .accordion-item, .contact-item'
+  );
+
+  // Set initial hidden state for all animated elements
+  animatedElements.forEach(function (el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  });
+
+  // Create the Intersection Observer
+  // It watches when elements enter the visible area of the screen
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        // If the element is now visible in the viewport...
+        if (entry.isIntersecting) {
+          // Make it visible with a slight delay based on position
+          // so sibling elements stagger their appearance
+          var el = entry.target;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+
+          // Stop watching this element — it only needs to animate once
+          observer.unobserve(el);
+        }
+      });
+    },
+    {
+      threshold: 0.1,       // Trigger when 10% of the element is visible
+      rootMargin: '0px 0px -40px 0px'  // Trigger 40px before it fully enters
+    }
+  );
+
+  // Start observing each animated element
+  animatedElements.forEach(function (el) {
+    observer.observe(el);
+  });
+}
