@@ -47,10 +47,29 @@ var currentSlide = 0;
 
 /* Holds reference to auto-shift timer */
 var slideshowTimer = null;
-
+/*info*/
 function initSlideshow() {
   /* Creates dot indicators dynamically to match each slide */
   buildSlideshowDots();
   /* Start the auto-shifter: moves to next slide every 4 seconds */
   startSlideshowTimer();
 }
+/*info*/
+function initNavbarScroll() {
+  var navbar = document.getElementById('navbar');
+
+  // Listen for scroll events on the window
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 50) {
+      // User has scrolled down — add the "scrolled" style class
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.12)';
+    } else {
+      // User is at the top — remove extra shadow
+      navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+    }
+  });
+}
+/*info*/
+/*info*/
+/*info*/
+/*info*/
