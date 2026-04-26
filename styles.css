@@ -756,5 +756,275 @@ TITLE SECTION
   color: rgba(255, 255, 255, 0.65); /* Text color */
   margin-bottom: 0 !important;        /* Space below button */
 }
+/* ============================================================
+   CONTACT SECTION
+   Two-column layout: contact info on left, form on right.
+============================================================ */
+
+.contact {
+  padding: 80px 0;                     /* Vertical padding */
+  background-color: var(--color-white);/* Background color */
+}
+
+/* Two-column grid */
+.contact-grid {
+  display: grid;                   /* Grid layout for contact section */
+  grid-template-columns: 1fr 1.4fr;/* Info column is narrower than form */
+  gap: 60px;                       /* Space between columns */
+  align-items: start;              /* Align items at the start */
+}
+
+/* Column of contact detail items */
+.contact-info {
+  display: flex;                   /* Flexbox layout for contact details */
+  flex-direction: column;          /* Stack items vertically */
+  gap: 28px;                       /* Space between contact items */
+}
+
+/* One contact detail row (icon + text) */
+.contact-item {
+  display: flex;                   /* Flexbox layout for contact item */
+  align-items: flex-start;         /* Align items at the start */
+  gap: 16px;                       /* Space between icon and text */
+}
+
+/* Circle icon container */
+.contact-item-icon {
+  width: 48px;                       /* Fixed width */
+  height: 48px;                      /* Fixed height */
+  min-width: 48px;                   /* Fixed min-width */
+  background: var(--color-secondary);/* Secondary color */
+  border-radius: 50%;                /* Circular shape */
+  display: flex;                     /* Flexbox layout */
+  align-items: center;               /* Center items vertically */
+  justify-content: center;           /* Center items horizontally */
+  font-size: 1.3rem;                 /* Font size */
+}
+
+/* Contact item heading */
+.contact-item h3 {
+  font-size: 1rem;                   /* Font size */
+  font-weight: 700;                  /* Font weight */
+  color: var(--color-primary);       /* Font color */
+  margin-bottom: 4px;                /* Space below heading */
+}
+
+/* Contact item paragraph/link */
+.contact-item p, .contact-item a {
+  font-size: 0.92rem;                /* Font size */
+  color: var(--color-text-light);    /* Font color */
+  line-height: 1.6;                  /* Line height */
+}
+
+.contact-item a:hover {
+  color: var(--color-primary);       /* Hover font color */
+}
+
+/* --- Contact Form --- */
+
+/* Form field group: label + input */
+.form-group {
+  display: flex;                     /* Flexbox layout */
+  flex-direction: column;            /* Stack items vertically */
+  gap: 6px;                          /* Space between items */
+  margin-bottom: 18px;               /* Space below group */
+}
+
+/* Label above each form field */
+.form-group label {
+  font-size: 0.9rem;                 /* Font size */
+  font-weight: 600;                  /* Font weight */
+  color: var(--color-text);          /* Font color */
+}
+
+/* Text input and text area */
+.form-group input,
+.form-group textarea {
+  width: 100%;                              /* Full width */
+  padding: 12px 16px;                       /* Padding */
+  border: 1.5px solid var(--color-border);  /* Border */
+  border-radius: 8px;                       /* Rounded corners */
+  font-size: 0.95rem;                       /* Font size */
+  font-family: inherit;                     /* Inherit font family */
+  color: var(--color-text);                 /* Font color */
+  background: var(--color-white);           /* Background color */
+  transition: border-color 0.2s ease;       /* Transition */
+  outline: none;                            /* No outline */
+}
+
+/* Blue border when field is focused (clicked into) */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);              /* Blue border */
+  box-shadow: 0 0 0 3px rgba(44, 111, 173, 0.15);/* Subtle shadow */
+}
+
+/* Placeholder text color */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #b0b8c4;                         /* Placeholder text color */
+}
+
+/* Success message shown after form submit */
+.form-success {
+  display: none;                            /* Hidden by default; JS makes it visible */
+  background-color: #d1fae5;              /* Light green */
+  color: #065f46;                         /* Dark green text */
+  border: 1px solid #6ee7b7;              /* Light green border */
+  border-radius: 8px;                       /* Rounded corners */
+  padding: 14px 18px;                       /* Padding */
+  margin-top: 16px;                         /* Space above */
+  font-size: 0.95rem;                       /* Font size */
+  font-weight: 500;                         /* Font weight */
+}
+
+/* When JavaScript adds the "visible" class to #formSuccess */
+.form-success.visible {
+  display: block;                           /* Show success message */
+}
+
+
+/* ============================================================
+   FOOTER
+   Dark footer at the bottom of the page.
+============================================================ */
+
+.footer {
+  background-color: #1a2e44;             /* Dark navy blue */
+  color: rgba(255, 255, 255, 0.75);      /* Light text color */
+  padding: 60px 0 0;                       /* Space above */
+}
+
+/* Three-column footer grid */
+.footer-grid {
+  display: grid;                            /* Grid layout */
+  grid-template-columns: 2fr 1fr 1fr;       /* Brand column is wider */
+  gap: 40px;                                /* Space between columns */
+  padding-bottom: 40px;                     /* Space below */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);/* Subtle border */
+}
+
+/* Footer organization name */
+.footer-brand h3 {
+  color: var(--color-white);                /* White text color */
+  font-size: 1.2rem;                        /* Font size */
+  margin-bottom: 10px;                      /* Space below */
+}
+
+.footer-brand p {
+  font-size: 0.9rem;                        /* Font size */
+  line-height: 1.7;                         /* Line height */
+}
+
+/* Footer column headings */
+.footer-links h4,
+.footer-social h4 {
+  color: var(--color-white);                /* White text color */
+  font-size: 0.95rem;                       /* Font size */
+  margin-bottom: 14px;                      /* Space below */
+  text-transform: uppercase;                /* Uppercase text */
+  letter-spacing: 0.05em;                   /* Letter spacing */
+}
+
+/* Footer link lists */
+.footer-links ul,
+.footer-social ul {
+  display: flex;                            /* Flexbox layout */
+  flex-direction: column;                   /* Stack items vertically */
+  gap: 8px;                                 /* Space between items */
+}
+
+/* Footer link */
+.footer-links a,
+.footer-social a {
+  font-size: 0.9rem;                        /* Font size */
+  color: rgba(255, 255, 255, 0.65);       /* Link color */
+  transition: color 0.2s ease;              /* Transition */
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  color: var(--color-white);                /* White text color */
+}
+
+/* Copyright bar at the very bottom */
+.footer-bottom {
+  padding: 20px 0;                          /* Space above and below */
+  text-align: center;                       /* Centered text */
+  font-size: 0.85rem;                       /* Font size */
+  color: rgba(255, 255, 255, 0.45);       /* Light text color */
+}
+
+
+/* ============================================================
+   RESPONSIVE STYLES (MEDIA QUERIES)
+   These rules override the above for smaller screens.
+   Mobile: max-width 768px
+   Tablet: max-width 1024px
+============================================================ */
+
+/* Tablet: up to 1024px wide */
+@media (max-width: 1024px) {
+
+  /* Reduce grid columns from 3 to 2 */
+  .about-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);        /* Two columns */
+  }
+
+  /* Footer: stack columns */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;               /* Two columns */
+  }
+}
+
+/* Mobile: up to 768px wide */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav links */
+  .nav-links {
+    display: none;                                /* Hide desktop navigation links */
+  }
+
+  /* Show hamburger button */
+  .hamburger {
+    display: flex;                                /* Flexbox layout */
+  }
+
+  /* Single column grids on mobile */
+  .about-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;                   /* Single column */
+  }
+
+  /* Slideshow: shrink arrows on small screens to save space */
+  .slideshow-arrow {
+    width: 38px;                                  /* Width */
+    height: 38px;                                 /* Height */
+    font-size: 1.6rem;                            /* Font size */
+  }
+
+  /* Contact: stack info and form vertically */
+  .contact-grid {
+    grid-template-columns: 1fr;                   /* Single column */
+    gap: 40px;                                    /* Space between items */
+  }
+
+  /* Footer: stack all columns */
+  .footer-grid {
+    grid-template-columns: 1fr;                   /* Single column */
+    gap: 28px;                                    /* Space between items */
+  }
+
+  /* Reduce section padding on mobile */
+  .about,                                         /* About section */
+  .why-join,                                      /* Why join section */
+  .support,                                       /* Support section */
+  .gallery,                                       /* Gallery section */
+  .apply,                                         /* Apply section */
+  .contact {                                      /* Contact section */
+    padding: 60px 0;                              /**/
+  }
+}
 
 
