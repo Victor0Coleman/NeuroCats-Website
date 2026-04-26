@@ -43,3 +43,31 @@ a {
   text-decoration: none;        /* Remove underline from links */
   color: inherit;               /* Inherit color from parent */
 }
+
+/* Responsive Images — fit them to their container */
+img {
+  max-width: 100%;              /* Ensure images are responsive */
+  display: block;               /* Remove bottom gap */
+}
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   Define colors and values here once; use them throughout.
+   To change the color scheme, only edit this section.
+============================================================ */
+:root{
+  --color-primary: #903929;        /* Main blue — used for buttons, headings, accents */
+  --color-primary-dark: #ccb97f;   /* Darker blue — used for button hover states */
+  --color-secondary: #e8f0fe;      /* Light blue background — used in sections */
+  --color-accent: #f4a261;         /* Warm orange — used for highlights */
+  --color-text: #2d2d2d;           /* Main body text color */
+  --color-text-light: #6b7280;     /* Lighter text — used for subtitles/meta */
+  --color-white: #ffffff;          /* Pure white — used for cards, backgrounds */  
+  --color-light-bg: #f8f9fb;       /* Off-white — alternating section background */
+  --color-border: #e2e8f0;         /* Light gray border color */
+  --border-radius: 12px;             /* How rounded corners are */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);  /* Subtle card shadow */
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.14); /* Deeper shadow on hover */
+  --transition: all 0.3s ease;       /* Standard smooth transition for animations */
+  --max-width: 1100px;               /* Maximum content width */
+}
