@@ -71,3 +71,47 @@ img {
   --transition: all 0.3s ease;       /* Standard smooth transition for animations */
   --max-width: 1100px;               /* Maximum content width */
 }
+/* ============================================================
+   UTILITY CLASSES
+   Reusable classes used across multiple sections.
+============================================================ */
+
+/* .container centers content and limits its width */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;               /* Centers horizontally */
+  padding: 0 24px;              /* Side padding so content doesn't touch screen edges */
+}
+/* .container centers content and limits its width */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;               /* Centers horizontally */
+  padding: 0 24px;              /* Side padding so content doesn't touch screen edges */
+}
+
+/* Section title — large heading in the center of each section */
+.section-title {
+  text-align: center;                     /* Center the title text */
+  font-size: clamp(1.6rem, 3vw, 2.2rem);  /* Scales with screen size */
+  font-weight: 700;                       /* Bold font weight */
+  color: var(--color-primary);            /* Main color for section titles */
+  margin-bottom: 12px;                    /* Space below section titles */  
+}
+
+/* Decorative underline beneath section titles */
+.section-underline {
+  width: 60px;                          /* Width of the underline */
+  height: 4px;                          /* Height of the underline */
+  background: var(--color-accent);      /* Color of the underline */
+  border-radius: 2px;                   /* Rounded corners for the underline */
+  margin: 0 auto 24px;                  /* Center the underline and add space below */
+}
+
+/* Subtitle text below a section heading */
+.section-subtitle {
+  text-align: center;                   /* Center the subtitle text */  
+  color: var(--color-text-light);       /* Light text color for subtitles */
+  max-width: 600px;                     /* Limit subtitle width */
+  margin: 0 auto 40px;                  /* Center the subtitle and add space below */
+  font-size: 1rem;
+}
