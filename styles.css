@@ -17,3 +17,29 @@
             and positioning.
         • It includes transitions and animations for interactive elements.
     */
+/* Box-sizing: makes width/height include padding and borders,
+   not add to them — prevents sizing surprises */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Base font and background for the whole page */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d2d2d;             /* Dark gray — easier on the eyes than pure black */
+  background-color: #ffe3cc;  /* Whitish tan background for a clean look */
+  line-height: 1.7;             /* Space between lines of text */
+  scroll-behavior: smooth;      /* Smooth scrolling when clicking nav links */
+}
+
+/* Remove bullet points from all lists */
+ul {
+  list-style: none;             /* Remove default bullet points */
+}
+
+/* Remove underline from links; inherit color from parent */
+a {
+  text-decoration: none;        /* Remove underline from links */
+  color: inherit;               /* Inherit color from parent */
+}
