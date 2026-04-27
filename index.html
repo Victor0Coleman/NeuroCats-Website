@@ -469,6 +469,120 @@ SECTION 3: WHY YOU SHOULD JOIN US
       </div>
     </div>
   </section>
+<!--*****************************************************************
+    SECTION 7: CONTACT US
+    Provides ways for visitors to reach out to the organization.
+    - Two-column layout: contact info on left, form on right
+    - LEFT: Contact information 
+        - Email contact
+        - replace temp email with real email address
+        - Phone contact
+        - replace temp phone with real phone number
+        - Location and hours
+        - replace temp location with real location
+        - replace temp hours with real hours
+
+***************************************************************** -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="section-underline"></div>
+      <p class="section-subtitle">We'd love to hear from you. Reach out anytime.</p>
+
+      <!-- Two-column layout: -->
+      <div class="contact-grid">
+
+        <!-- LEFT: Contact information -->
+        <div class="contact-info">
+
+          <!-- Email contact -->
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128231;</div>
+            <div>
+              <h3>Email Us</h3>
+              <!-- Replace with your real email address -->
+              <p><a href="mailto:lori.e@txstate.edu">lori.e@txstate.edu</a></p>
+            </div>
+          </div>
+
+          <!-- Phone contact -->
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128222;</div>
+            <div>
+              <h3>Call Us</h3>
+              <!-- Replace with your real phone number -->
+              <p><a href="tel:+15122453451">(512) 245-3451</a></p>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128205;</div>
+            <div>
+              <h3>Find Us</h3>
+              <!-- Replace with your real address -->
+              <p>LBJ Student Center, Room 506<br />601 University Drive<br />San Marcos, TX 78666</p>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="contact-item">
+            <div class="contact-item-icon">&#128336;</div>
+            <div>
+              <h3>Office Hours</h3>
+              <p>Monday – Friday: 8am – 6pm</p>
+            </div>
+          </div>
+
+        </div><!-- end .contact-info -->
+
+        <!-- RIGHT: Contact form -->
+        <!-- This form sends a message when submitted.
+             To make it actually send emails, connect it to a backend service
+             like Formspree (formspree.io) or EmailJS.
+             For now it shows a success message via JavaScript. -->
+        <div class="contact-form-wrapper">
+          <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+
+            <!-- Name field -->
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+
+            <!-- Email field -->
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+
+            <!-- Subject field -->
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="How can we help?" />
+            </div>
+
+            <!-- Message textarea -->
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+            <!-- Success message shown after form is submitted (hidden by default) -->
+            <div class="form-success" id="formSuccess">
+              &#10003; Thank you! Your message has been received. We'll be in touch soon.
+            </div>
+
+          </form>
+        </div><!-- end .contact-form-wrapper -->
+
+      </div><!-- end .contact-grid -->
+    </div>
+  </section>
+
 
 </body>
 </html>
