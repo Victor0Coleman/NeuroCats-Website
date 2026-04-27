@@ -72,7 +72,7 @@ img {
   --max-width: 1100px;               /* Maximum content width */
 }
 /* ============================================================
-   UTILITY CLASSES
+UTILITY CLASSES
    Reusable classes used across multiple sections.
 ============================================================ */
 
@@ -91,11 +91,11 @@ img {
 
 /* Section title — large heading in the center of each section */
 .section-title {
-  text-align: center;                     /* Center the title text */
-  font-size: clamp(1.6rem, 3vw, 2.2rem);  /* Scales with screen size */
-  font-weight: 700;                       /* Bold font weight */
-  color: var(--color-primary);            /* Main color for section titles */
-  margin-bottom: 12px;                    /* Space below section titles */  
+  text-align: center;                   /* Center the title text */
+  font-size: clamp(1.6rem, 3vw, 2.2rem);/* Scales with screen size */
+  font-weight: 700;                     /* Bold font weight */
+  color: var(--color-primary);          /* Main color for section titles */
+  margin-bottom: 12px;                  /* Space below section titles */  
 }
 
 /* Decorative underline beneath section titles */
@@ -114,4 +114,274 @@ img {
   max-width: 600px;                     /* Limit subtitle width */
   margin: 0 auto 40px;                  /* Center the subtitle and add space below */
   font-size: 1rem;
+}
+
+/* ============================================================
+BUTTONS
+   .btn is the base button class.
+   .btn-primary is filled/colored. .btn-white is outlined.
+   .btn-full makes the button stretch full-width.
+============================================================ */
+
+.btn {
+  display: inline-block;                /* Base button styling */
+  padding: 14px 32px;                   /* Button padding */
+  border-radius: 50px;                  /* Pill-shaped button */
+  font-weight: 600;                     /* Semi-bold font weight */
+  font-size: 1rem;                      /* Base font size */
+  cursor: pointer;                      /* Pointer cursor on hover */
+  border: none;                         /* No border */
+  transition: var(--transition);        /* Standard smooth transition for animations */
+  text-align: center;                   /* Center text alignment */
+}
+
+/* Filled blue button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Filled blue button hover: darker blue + subtle lift */
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);      /* Darker blue */
+  transform: translateY(-2px);                      /* Subtle lift effect */
+  box-shadow: 0 6px 20px rgba(44, 111, 173, 0.4); /* Soft shadow for depth */
+}
+
+/* White button — used on colored backgrounds */
+.btn-white {
+  background-color: var(--color-white);             /* White background */
+  color: var(--color-primary);                      /* Main color for text */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);      /* Subtle shadow for depth */
+}
+
+/* White button hover */
+.btn-white:hover {
+  transform: translateY(-2px);                      /* Subtle lift effect */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);      /* Deeper shadow for depth */
+}
+
+/* Full-width button */
+.btn-full {
+  width: 100%;                                      /* Full-width button */
+}
+
+/* ============================================================
+NAVIGATION BAR
+   Sticky bar fixed to the top of the screen.
+   .nav-container arranges logo and links side-by-side.
+   .hamburger appears only on small screens (see media queries).
+============================================================ */
+
+.navbar {
+  position: fixed;                              /* Stays at the top as user scrolls */
+  top: 0;                                       /* Aligns to the top */
+  left: 0;                                      /* Aligns to the left */
+  right: 0;                                     /* Aligns to the right */
+  z-index: 1000;                                /* Stays above all other content */
+  background-color: var(--color-white);         /* White background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+  transition: var(--transition);                /* Smooth transition for background */
+}
+
+/* Inner container of the navbar */
+.nav-container {
+  max-width: var(--max-width);                  /* Centers the content */
+  margin: 0 auto;                               /* Centers the container */
+  padding: 0 24px;                              /* Horizontal padding */
+  height: 65px;                                 /* Fixed height */
+  display: flex;                                /* Side-by-side layout */
+  align-items: center;                          /* Vertically centered */
+  justify-content: space-between;               /* Logo left, links right */
+}
+
+/* Organization name text in the navbar */
+.nav-logo {
+  font-size: 1.25rem;                           /* Logo font size */
+  font-weight: 700;                             /* Logo font weight */
+  color: var(--color-primary);                  /* Logo color */
+  white-space: nowrap;                          /* Prevents text wrapping */
+}
+
+/* Desktop nav links list — horizontal row */
+.nav-links {
+  display: flex;                                /* Side-by-side layout */
+  gap: 8px;                                     /* Space between links */
+  align-items: center;                          /* Vertically centered */
+}
+
+/* Each individual nav link */
+.nav-links a {
+  padding: 8px 14px;                            /* Link padding */
+  border-radius: 6px;                           /* Link border radius */
+  font-size: 0.92rem;                           /* Link font size */
+  font-weight: 500;                             /* Link font weight */
+  color: var(--color-text);                     /* Link color */
+  transition: var(--transition);                /* Link transition */
+}
+
+/* Nav link hover — highlight with blue */
+.nav-links a:hover {
+  color: var(--color-primary);                  /* Link hover color */
+  background-color: var(--color-secondary);     /* Link hover background */
+}
+
+/* Hamburger button (3 lines) — only visible on mobile */
+.hamburger {    
+  display: none;                                /* Hidden on desktop */
+  flex-direction: column;                       /* Stacks lines vertically */
+  gap: 5px;                                     /* Space between lines */
+  background: none;                             /* No background */
+  border: none;                                 /* No border */
+  cursor: pointer;                              /* Pointer cursor on hover */
+  padding: 8px;                                 /* Hamburger button padding */
+}
+
+/* Each line of the hamburger icon */
+.hamburger span {   
+  width: 24px;                                   /* Hamburger line width */
+  height: 2px;                                   /* Hamburger line height */
+  background: var(--color-text);                 /* Hamburger line color */
+  border-radius: 2px;                            /* Hamburger line border radius */
+  transition: var(--transition);                 /* Hamburger line transition */
+}
+
+/* Mobile dropdown nav — hidden by default */
+.mobile-nav {
+  display: none;                                 /* Shown/hidden by JavaScript */
+  flex-direction: column;                        /* Stacks links vertically */
+  background: var(--color-white);                /* Mobile nav background color */
+  border-top: 1px solid var(--color-border);     /* Mobile nav border color */
+  padding: 12px 0;                               /* Mobile nav padding */
+}
+
+/* Mobile nav is visible when JavaScript adds the "open" class */
+.mobile-nav.open {
+  display: flex;                                /* Shown when open */
+}
+
+/* Each mobile nav link */
+.mobile-nav a {
+  display: block;                               /* Stacks links vertically */
+  padding: 12px 24px;                           /* Mobile nav link padding */
+  font-size: 1rem;                              /* Mobile nav link font size */
+  color: var(--color-text);                     /* Mobile nav link color */
+  transition: var(--transition);                /* Mobile nav link transition */
+}
+
+.mobile-nav a:hover {   
+  color: var(--color-primary);                  /* Mobile nav link hover color */
+  background-color: var(--color-secondary);     /* Mobile nav link hover background */
+}
+
+/* ============================================================
+TITLE SECTION
+   The large introductory section at the top of the page.
+   Has a gradient background and centered text.
+============================================================ */
+
+.hero {
+  min-height: 100vh;                             /* Full screen height */
+  background: linear-gradient(135deg, #1a4f80 0%, #2c6fad 50%, #4a90d9 100%); /* Hero background gradient */
+  display: flex;                                  /* Flexbox layout */
+  align-items: center;                            /* Vertically center content */
+  justify-content: center;                        /* Horizontally center content */
+  text-align: center;                             /* Center text */
+  padding: 100px 24px 60px;                       /* Top padding accounts for the fixed navbar */
+  position: relative;                             /* Needed for the wave at the bottom */
+  overflow: hidden;                               /* Hide overflow */
+}
+
+/* Content inside the hero (text + button) */
+.hero-content {
+  max-width: 700px;                               /* Limit content width */
+  z-index: 1;                                     /* Above any decorative elements */
+}
+
+/* Main hero heading */
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);            /* Scales with screen width */
+  font-weight: 800;                               /* Bold font weight */
+  color: var(--color-white);                      /* Hero text color */
+  line-height: 1.2;                               /* Line height */
+  margin-bottom: 20px;                            /* Space below title */
+}
+
+/* Hero subtitle paragraph */
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);            /* Scales with screen width */
+  color: rgba(255, 255, 255, 0.88);              /* Hero text color */
+  margin-bottom: 36px;                             /* Space below subtitle */
+  max-width: 540px;                                /* Limit subtitle width */
+  margin-left: auto;                               /* Center subtitle */
+  margin-right: auto;                              /* Center subtitle */
+}
+
+/* White wave SVG shape at the bottom of the hero section */
+.hero-wave {
+  position: absolute;                              /* Positioning context for the wave */
+  bottom: -1px;                                    /* Positioning context for the wave */
+  left: 0;                                         /* Positioning context for the wave */
+  right: 0;                                        /* Positioning context for the wave */
+}
+
+.hero-wave svg {
+  width: 100%;                                     /* Full width */
+  height: auto;                                    /* Maintain aspect ratio */
+}
+
+
+/* ============================================================
+   ABOUT SECTION
+   White background section with three info cards.
+============================================================ */
+
+.about {
+  padding: 80px 0;                                  /* Vertical padding for the about section */
+  background-color: var(--color-white);             /* White background */
+}
+
+/* Three-column grid for about cards */
+.about-grid {
+  display: grid;                                    /* Grid layout for about cards */
+  grid-template-columns: repeat(3, 1fr);            /* 3 equal columns */
+  gap: 28px;                                        /* Space between cards */
+  margin-top: 12px;                                 /* Space above the grid */
+}
+
+/* Individual about card */
+.about-card {
+  background: var(--color-light-bg);                /* Light background for cards */
+  border-radius: var(--border-radius);              /* Rounded corners for cards */
+  padding: 36px 28px;                               /* Padding inside cards */
+  text-align: center;                               /* Center text inside cards */
+  border: 1px solid var(--color-border);            /* Border for cards */
+  transition: var(--transition);                    /* Transition for cards */
+}
+
+/* Card hover: lift effect */
+.about-card:hover {
+  transform: translateY(-4px);                      /* Lift effect on hover */
+  box-shadow: var(--shadow-hover);                  /* Shadow effect on hover */
+}
+
+/* Large emoji/icon at the top of each card */
+.about-icon {
+  font-size: 2.8rem;                                /* Large icon size */
+  margin-bottom: 16px;                              /* Space below icon */
+}
+
+/* Card heading */
+.about-card h3 {
+  font-size: 1.2rem;                                /* Card heading font size */
+  font-weight: 700;                                 /* Card heading font weight */
+  color: var(--color-primary);                      /* Card heading color */
+  margin-bottom: 12px;                              /* Space below heading */
+}
+
+/* Card paragraph text */
+.about-card p {
+  color: var(--color-text-light);                   /* Card paragraph text color */
+  font-size: 0.95rem;                               /* Card paragraph font size */
+  line-height: 1.7;                                 /* Card paragraph line height */
 }
