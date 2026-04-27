@@ -438,3 +438,593 @@ TITLE SECTION
   line-height: 1.6;                         /* Card paragraph line height */
 }
 
+/* ============================================================
+   SUPPORT SECTION (ACCORDION / DROPDOWNS)
+   Each support type is an "accordion item."
+   Clicking the header toggles the body open/closed.
+   JavaScript (in script.js) adds/removes the "open" class.
+============================================================ */
+
+.support {
+  padding: 80px 0;                      /* Vertical padding for the support section */
+  background-color: var(--color-white); /* White background */
+}
+
+/* Container that holds all accordion items */
+.support-accordion {
+  max-width: 720px;                     /* Maximum width for the accordion container */
+  margin: 0 auto;                       /* Center the accordion container */
+  display: flex;                        /* Use flexbox for layout */
+  flex-direction: column;               /* Stack items vertically */
+  gap: 16px;                            /* Space between accordion items */
+}
+
+/* One accordion item = header + body */
+.accordion-item {
+  border-radius: var(--border-radius);      /* Rounded corners for accordion items */
+  border: 1.5px solid var(--color-border);  /* Border for accordion items */
+  overflow: hidden;                         /* Hides body when collapsed */
+  box-shadow: var(--shadow);                /* Shadow for accordion items */
+  transition: var(--transition);            /* Transition for accordion items */
+}
+
+/* Slight lift on hover */
+.accordion-item:hover {                     
+  box-shadow: var(--shadow-hover);          /* Shadow effect on hover */
+}
+
+/* Clickable header button for each accordion item */
+.accordion-header {
+  width: 100%;                              /* Full width */
+  display: flex;                            /* Flexbox for alignment */
+  align-items: center;                      /* Center items vertically */
+  gap: 14px;                                /* Space between items */
+  padding: 20px 24px;                       /* Padding inside header */
+  background: var(--color-white);           /* White background */
+  border: none;                             /* No border */
+  cursor: pointer;                          /* Shows pointer cursor on hover */
+  text-align: left;                         /* Align text to the left */
+  font-size: 1.08rem;                       /* Font size for header */
+  font-weight: 600;                         /* Font weight for header */
+  color: var(--color-text);                 /* Text color for header */
+  transition: var(--transition);            /* Transition for header */
+}
+
+/* Header background when hovered */
+.accordion-header:hover {
+  background-color: var(--color-secondary); /* Background color on hover */
+}
+
+/* Header background when the accordion is open */
+.accordion-item.open .accordion-header {
+  background-color: var(--color-primary);   /* Background color when open */
+  color: var(--color-white);                /* Text color when open */
+}
+
+/* Emoji icon in the header */
+.accordion-icon {
+  font-size: 1.5rem;                        /* Font size for emoji icon */
+  flex-shrink: 0;                           /* Won't shrink if space is tight */
+}
+
+/* Label text in the header */
+.accordion-label {
+  flex: 1;                                  /* Takes up remaining space */
+}
+
+/* Arrow icon — rotates 180° when accordion is open */
+.accordion-arrow {
+  font-size: 0.75rem;                       /* Font size for arrow icon */
+  transition: transform 0.3s ease;          /* Smooth rotation transition */
+  color: var(--color-text-light);           /* Color for arrow icon */
+}
+
+/* When open, arrow rotates to point up */
+.accordion-item.open .accordion-arrow {
+  transform: rotate(180deg);                 /* Rotate arrow */
+  color: rgba(255, 255, 255, 0.8);         /* Lighter color when open */
+}
+
+/* The collapsible body — hidden by default */
+.accordion-body {
+  max-height: 0;                            /* Collapsed = 0 height */
+  overflow: hidden;                         /* Hide content when collapsed */
+  transition: max-height 0.4s ease;         /* Smooth expand/collapse animation */
+  background-color: #fafbff;              /* Background color for body */
+}
+
+/* When accordion is open, body expands (JS sets max-height dynamically) */
+.accordion-item.open .accordion-body {
+  max-height: 400px;                        /* Enough to show all content */
+}
+
+/* Padding inside the accordion body content */
+.accordion-content {
+  padding: 20px 24px;                       /* Padding inside content */
+  border-top: 1px solid var(--color-border);/* Border on top of content */
+}
+
+/* Paragraph inside accordion body */
+.accordion-content p { 
+  color: var(--color-text);                 /* Text color for paragraphs */
+  margin-bottom: 14px;                      /* Space below paragraphs */
+  font-size: 0.95rem;                       /* Font size for paragraphs */
+  line-height: 1.7;                         /* Line height for paragraphs */
+}
+
+/* Bullet list inside accordion body */
+.accordion-content ul {
+  list-style: disc;                         /* Show bullet points inside accordion */
+  padding-left: 20px;                       /* Indent bullet points */
+  display: flex;                            /* Use flexbox for layout */
+  flex-direction: column;                   /* Stack items vertically */
+  gap: 6px;                                 /* Space between list items */
+}
+
+.accordion-content li {
+  color: var(--color-text-light);           /* Text color for list items */
+  font-size: 0.92rem;                       /* Font size for list items */
+}
+
+/* ============================================================
+   GALLERY / SLIDESHOW SECTION
+   Shows one photo at a time. Arrows and dots navigate slides.
+   JavaScript (in script.js) adds/removes the "slide-active" class.
+============================================================ */
+
+.gallery {
+  padding: 80px 0;              /* Vertical padding for gallery section */
+  background-color: var(--color-light-bg);              /* Light background color */
+}
+
+/* Outer wrapper — holds the arrows and the slide track side by side */
+.slideshow-wrapper {
+  position: relative;         /* Positioning context for absolute children */
+  display: flex;              /* Flexbox layout for arrows and slide track */
+  align-items: center;        /* Center items vertically */
+  gap: 12px;                  /* Space between arrows and slide track */
+  max-width: 820px;           /* Maximum width for the slideshow */
+  margin: 0 auto;             /* Center the slideshow wrapper */
+}
+
+/*
+  The outer track clips everything outside the visible area.
+  Only one slide's width is ever shown at a time.
+*/
+.slideshow-track {
+  flex: 1;              /* Takes up remaining space in the wrapper */
+  overflow: hidden;            /* Hides the slides that are off-screen */
+  border-radius: var(--border-radius);              /* Rounded corners */
+  box-shadow: var(--shadow-hover);              /* Subtle shadow effect */
+  aspect-ratio: 16 / 9;       /* Widescreen photo format */
+}
+
+/*
+  The inner row lays all slides out horizontally, side by side.
+  JavaScript shifts this row left using: slidesRow.style.transform = 'translateX(-N%)'
+  The transition property makes the shift animate smoothly.
+*/
+.slides-row {
+  display: flex;               /* Puts all slides in a horizontal line */
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;      /* Browser performance hint */
+  height: 100%;                 /* Each slide fills the track vertically */
+}
+
+/* Each slide is exactly as wide as the track — only one is in view at a time */
+.slide {
+  flex: 0 0 100%;              /* Each slide: full width, never shrinks */
+  height: 100%;              /* Each slide fills the track vertically */
+}
+
+/* Photo placeholder — shown until a real image is added */
+.photo-placeholder {
+  width: 100%;                 /* Full width */
+  height: 100%;                /* Full height */
+  background: linear-gradient(135deg, #c8ddf0 0%, #a8c8e8 100%);/* Background gradient */
+  display: flex;               /* Flexbox layout for placeholder content */
+  flex-direction: column;      /* Stack content vertically */
+  align-items: center;         /* Center items horizontally */
+  justify-content: center;     /* Center items vertically */
+  color: var(--color-primary); /* Text color for placeholder */
+  text-align: center;          /* Center text alignment */
+  padding: 20px;               /* Padding inside the placeholder */
+}
+
+/* Camera icon inside the placeholder */
+.photo-placeholder span {
+  font-size: 4rem;             /* Camera icon size */
+  margin-bottom: 12px;         /* Space below the icon */
+}
+
+/* Label text inside the placeholder */
+.photo-placeholder p {
+  font-size: 1.1rem;           /* Font size for label text */
+  font-weight: 600;            /* Bold text */
+  opacity: 0.75;               /* Slightly transparent */
+}
+
+/* Real image inside a slide — fills the slide fully */
+.slide img {
+  width: 100%;                 /* Full width */
+  height: 100%;                /* Full height */
+  object-fit: cover;           /* Crops to fill without distorting */
+  display: block;              /* Remove bottom gap */
+}
+
+/* Left/right arrow buttons */
+.slideshow-arrow {
+  flex-shrink: 0;               /* Prevents shrinking */
+  width: 48px;                  /* Fixed width */
+  height: 48px;                 /* Fixed height */
+  border-radius: 50%;           /* Circular shape */
+  border: none;                 /* No border */
+  background: var(--color-white);/* White background */
+  color: var(--color-primary);  /* Primary text color */
+  font-size: 2rem;              /* Large font size */
+  line-height: 1;               /* Single line height */
+  cursor: pointer;              /* Pointer cursor on hover */
+  box-shadow: var(--shadow);    /* Subtle shadow effect */
+  display: flex;                /* Flexbox layout */
+  align-items: center;          /* Center items vertically */
+  justify-content: center;      /* Center items horizontally */
+  transition: var(--transition);/* Smooth transition for hover effects */
+  z-index: 1;                   /* Stacking order */
+}
+
+.slideshow-arrow:hover {
+  background: var(--color-primary);  /* Background color on hover */
+  color: var(--color-white);         /* Text color on hover */
+  box-shadow: var(--shadow-hover);   /* Shadow effect on hover */
+  transform: scale(1.08);            /* Slightly enlarge on hover */
+}
+
+/* Row of dot indicators below the slideshow */
+.slideshow-dots {
+  display: flex;              /* Flexbox layout for dots */
+  justify-content: center;    /* Center dots horizontally */
+  gap: 10px;                  /* Space between dots */
+  margin-top: 18px;           /* Space above dots */
+}
+
+/* Individual dot — a small circle */
+.dot {
+  width: 12px;                  /* Dot width */
+  height: 12px;                 /* Dot height */
+  border-radius: 50%;           /* Circular shape */
+  border: none;                 /* No border */
+  background: var(--color-border);/* Dot background color */
+  cursor: pointer;              /* Pointer cursor on hover */
+  transition: var(--transition);/* Smooth transition for hover effects */
+  padding: 0;                   /* No padding */
+}
+
+/* Active dot — filled in with primary color */
+.dot-active {
+  background: var(--color-primary); /* Active dot background color */
+  transform: scale(1.25);           /* Enlarge active dot */
+}
+
+/* Label shown below the dots for the current slide */
+.slide-label {
+  text-align: center;            /* Centered text */
+  margin-top: 12px;              /* Space above label */
+  font-size: 0.95rem;            /* Font size */
+  font-weight: 600;              /* Bold text */
+  color: var(--color-text-light);/* Light text color */
+  letter-spacing: 0.02em;        /* Slightly increased letter spacing */
+}
+
+
+/* ============================================================
+   APPLY SECTION
+   A bold call-to-action box with an application link button.
+============================================================ */
+
+.apply {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #2c6fad 0%, #1a4f80 100%);
+}
+
+/* Inner box with rounded corners and padding */
+.apply-box {
+  text-align: center;          /* Centered text */
+  max-width: 620px;            /* Max width */
+  margin: 0 auto;              /* Centered margin */
+}
+
+/* Apply section heading */
+.apply-box h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);/* Font size */
+  font-weight: 700;                     /* Font weight */
+  color: var(--color-white);            /* Font color */
+  margin-bottom: 16px;                  /* Space below heading */
+}
+
+/* Apply section paragraph */
+.apply-box p {
+  color: rgba(255, 255, 255, 0.88); /* Text color */
+  font-size: 1.05rem;                 /* Font size */
+  margin-bottom: 32px;                /* Space below paragraph */
+  line-height: 1.7;                   /* Line height */
+}
+
+/* Small note text below the button */
+.apply-note {
+  margin-top: 16px;                   /* Space above note */
+  font-size: 0.85rem;                 /* Font size */
+  color: rgba(255, 255, 255, 0.65); /* Text color */
+  margin-bottom: 0 !important;        /* Space below button */
+}
+/* ============================================================
+   CONTACT SECTION
+   Two-column layout: contact info on left, form on right.
+============================================================ */
+
+.contact {
+  padding: 80px 0;                     /* Vertical padding */
+  background-color: var(--color-white);/* Background color */
+}
+
+/* Two-column grid */
+.contact-grid {
+  display: grid;                   /* Grid layout for contact section */
+  grid-template-columns: 1fr 1.4fr;/* Info column is narrower than form */
+  gap: 60px;                       /* Space between columns */
+  align-items: start;              /* Align items at the start */
+}
+
+/* Column of contact detail items */
+.contact-info {
+  display: flex;                   /* Flexbox layout for contact details */
+  flex-direction: column;          /* Stack items vertically */
+  gap: 28px;                       /* Space between contact items */
+}
+
+/* One contact detail row (icon + text) */
+.contact-item {
+  display: flex;                   /* Flexbox layout for contact item */
+  align-items: flex-start;         /* Align items at the start */
+  gap: 16px;                       /* Space between icon and text */
+}
+
+/* Circle icon container */
+.contact-item-icon {
+  width: 48px;                       /* Fixed width */
+  height: 48px;                      /* Fixed height */
+  min-width: 48px;                   /* Fixed min-width */
+  background: var(--color-secondary);/* Secondary color */
+  border-radius: 50%;                /* Circular shape */
+  display: flex;                     /* Flexbox layout */
+  align-items: center;               /* Center items vertically */
+  justify-content: center;           /* Center items horizontally */
+  font-size: 1.3rem;                 /* Font size */
+}
+
+/* Contact item heading */
+.contact-item h3 {
+  font-size: 1rem;                   /* Font size */
+  font-weight: 700;                  /* Font weight */
+  color: var(--color-primary);       /* Font color */
+  margin-bottom: 4px;                /* Space below heading */
+}
+
+/* Contact item paragraph/link */
+.contact-item p, .contact-item a {
+  font-size: 0.92rem;                /* Font size */
+  color: var(--color-text-light);    /* Font color */
+  line-height: 1.6;                  /* Line height */
+}
+
+.contact-item a:hover {
+  color: var(--color-primary);       /* Hover font color */
+}
+
+/* --- Contact Form --- */
+
+/* Form field group: label + input */
+.form-group {
+  display: flex;                     /* Flexbox layout */
+  flex-direction: column;            /* Stack items vertically */
+  gap: 6px;                          /* Space between items */
+  margin-bottom: 18px;               /* Space below group */
+}
+
+/* Label above each form field */
+.form-group label {
+  font-size: 0.9rem;                 /* Font size */
+  font-weight: 600;                  /* Font weight */
+  color: var(--color-text);          /* Font color */
+}
+
+/* Text input and text area */
+.form-group input,
+.form-group textarea {
+  width: 100%;                              /* Full width */
+  padding: 12px 16px;                       /* Padding */
+  border: 1.5px solid var(--color-border);  /* Border */
+  border-radius: 8px;                       /* Rounded corners */
+  font-size: 0.95rem;                       /* Font size */
+  font-family: inherit;                     /* Inherit font family */
+  color: var(--color-text);                 /* Font color */
+  background: var(--color-white);           /* Background color */
+  transition: border-color 0.2s ease;       /* Transition */
+  outline: none;                            /* No outline */
+}
+
+/* Blue border when field is focused (clicked into) */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);              /* Blue border */
+  box-shadow: 0 0 0 3px rgba(44, 111, 173, 0.15);/* Subtle shadow */
+}
+
+/* Placeholder text color */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #b0b8c4;                         /* Placeholder text color */
+}
+
+/* Success message shown after form submit */
+.form-success {
+  display: none;                            /* Hidden by default; JS makes it visible */
+  background-color: #d1fae5;              /* Light green */
+  color: #065f46;                         /* Dark green text */
+  border: 1px solid #6ee7b7;              /* Light green border */
+  border-radius: 8px;                       /* Rounded corners */
+  padding: 14px 18px;                       /* Padding */
+  margin-top: 16px;                         /* Space above */
+  font-size: 0.95rem;                       /* Font size */
+  font-weight: 500;                         /* Font weight */
+}
+
+/* When JavaScript adds the "visible" class to #formSuccess */
+.form-success.visible {
+  display: block;                           /* Show success message */
+}
+
+
+/* ============================================================
+   FOOTER
+   Dark footer at the bottom of the page.
+============================================================ */
+
+.footer {
+  background-color: #1a2e44;             /* Dark navy blue */
+  color: rgba(255, 255, 255, 0.75);      /* Light text color */
+  padding: 60px 0 0;                       /* Space above */
+}
+
+/* Three-column footer grid */
+.footer-grid {
+  display: grid;                            /* Grid layout */
+  grid-template-columns: 2fr 1fr 1fr;       /* Brand column is wider */
+  gap: 40px;                                /* Space between columns */
+  padding-bottom: 40px;                     /* Space below */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);/* Subtle border */
+}
+
+/* Footer organization name */
+.footer-brand h3 {
+  color: var(--color-white);                /* White text color */
+  font-size: 1.2rem;                        /* Font size */
+  margin-bottom: 10px;                      /* Space below */
+}
+
+.footer-brand p {
+  font-size: 0.9rem;                        /* Font size */
+  line-height: 1.7;                         /* Line height */
+}
+
+/* Footer column headings */
+.footer-links h4,
+.footer-social h4 {
+  color: var(--color-white);                /* White text color */
+  font-size: 0.95rem;                       /* Font size */
+  margin-bottom: 14px;                      /* Space below */
+  text-transform: uppercase;                /* Uppercase text */
+  letter-spacing: 0.05em;                   /* Letter spacing */
+}
+
+/* Footer link lists */
+.footer-links ul,
+.footer-social ul {
+  display: flex;                            /* Flexbox layout */
+  flex-direction: column;                   /* Stack items vertically */
+  gap: 8px;                                 /* Space between items */
+}
+
+/* Footer link */
+.footer-links a,
+.footer-social a {
+  font-size: 0.9rem;                        /* Font size */
+  color: rgba(255, 255, 255, 0.65);       /* Link color */
+  transition: color 0.2s ease;              /* Transition */
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  color: var(--color-white);                /* White text color */
+}
+
+/* Copyright bar at the very bottom */
+.footer-bottom {
+  padding: 20px 0;                          /* Space above and below */
+  text-align: center;                       /* Centered text */
+  font-size: 0.85rem;                       /* Font size */
+  color: rgba(255, 255, 255, 0.45);       /* Light text color */
+}
+
+
+/* ============================================================
+   RESPONSIVE STYLES (MEDIA QUERIES)
+   These rules override the above for smaller screens.
+   Mobile: max-width 768px
+   Tablet: max-width 1024px
+============================================================ */
+
+/* Tablet: up to 1024px wide */
+@media (max-width: 1024px) {
+
+  /* Reduce grid columns from 3 to 2 */
+  .about-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);        /* Two columns */
+  }
+
+  /* Footer: stack columns */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;               /* Two columns */
+  }
+}
+
+/* Mobile: up to 768px wide */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav links */
+  .nav-links {
+    display: none;                                /* Hide desktop navigation links */
+  }
+
+  /* Show hamburger button */
+  .hamburger {
+    display: flex;                                /* Flexbox layout */
+  }
+
+  /* Single column grids on mobile */
+  .about-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;                   /* Single column */
+  }
+
+  /* Slideshow: shrink arrows on small screens to save space */
+  .slideshow-arrow {
+    width: 38px;                                  /* Width */
+    height: 38px;                                 /* Height */
+    font-size: 1.6rem;                            /* Font size */
+  }
+
+  /* Contact: stack info and form vertically */
+  .contact-grid {
+    grid-template-columns: 1fr;                   /* Single column */
+    gap: 40px;                                    /* Space between items */
+  }
+
+  /* Footer: stack all columns */
+  .footer-grid {
+    grid-template-columns: 1fr;                   /* Single column */
+    gap: 28px;                                    /* Space between items */
+  }
+
+  /* Reduce section padding on mobile */
+  .about,                                         /* About section */
+  .why-join,                                      /* Why join section */
+  .support,                                       /* Support section */
+  .gallery,                                       /* Gallery section */
+  .apply,                                         /* Apply section */
+  .contact {                                      /* Contact section */
+    padding: 60px 0;                              /**/
+  }
+}
+
+
