@@ -28,7 +28,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #2d2d2d;             /* Dark gray — easier on the eyes than pure black */
-  background-color: #ffe3cc;  /* Whitish tan background for a clean look */
+  background-color: #e1c2a8;  /* Whitish tan background for a clean look */
   line-height: 1.7;             /* Space between lines of text */
   scroll-behavior: smooth;      /* Smooth scrolling when clicking nav links */
 }
@@ -56,12 +56,12 @@ img {
    To change the color scheme, only edit this section.
 ============================================================ */
 :root{
-  --color-primary: #903929;        /* Main blue — used for buttons, headings, accents */
-  --color-primary-dark: #ccb97f;   /* Darker blue — used for button hover states */
-  --color-secondary: #e8f0fe;      /* Light blue background — used in sections */
-  --color-accent: #f4a261;         /* Warm orange — used for highlights */
-  --color-text: #2d2d2d;           /* Main body text color */
-  --color-text-light: #6b7280;     /* Lighter text — used for subtitles/meta */
+  --color-primary: #903929;        /* Main color — used for buttons, headings, accents */
+  --color-primary-dark: #ccb97f;   /* color used for button hover states */
+  --color-secondary: #fad9bf;      /* Light color background — used in sections */
+  --color-accent: #7d5812;         /* Warm orange — used for highlights */
+  --color-text: #000000;           /* Main body text color */
+  --color-text-light: #4d5461;     /* Lighter text — used for subtitles/meta */
   --color-white: #ffffff;          /* Pure white — used for cards, backgrounds */  
   --color-light-bg: #f8f9fb;       /* Off-white — alternating section background */
   --color-border: #e2e8f0;         /* Light gray border color */
@@ -137,15 +137,15 @@ BUTTONS
 
 /* Filled blue button */
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 /* Filled blue button hover: darker blue + subtle lift */
 .btn-primary:hover {
   background-color: var(--color-primary-dark);      /* Darker blue */
   transform: translateY(-2px);                      /* Subtle lift effect */
-  box-shadow: 0 6px 20px rgba(44, 111, 173, 0.4); /* Soft shadow for depth */
+  box-shadow: 0 6px 20px rgba(140, 40, 19, 0.4); /* Soft shadow for depth */
 }
 
 /* White button — used on colored backgrounds */
@@ -179,7 +179,7 @@ NAVIGATION BAR
   left: 0;                                      /* Aligns to the left */
   right: 0;                                     /* Aligns to the right */
   z-index: 1000;                                /* Stays above all other content */
-  background-color: var(--color-white);         /* White background */
+  background-color: var(--color-primary-dark); /* Dark background */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
   transition: var(--transition);                /* Smooth transition for background */
 }
@@ -250,7 +250,7 @@ NAVIGATION BAR
 .mobile-nav {
   display: none;                                 /* Shown/hidden by JavaScript */
   flex-direction: column;                        /* Stacks links vertically */
-  background: var(--color-white);                /* Mobile nav background color */
+  background: var(--color-primary-dark);                /* Mobile nav background color */
   border-top: 1px solid var(--color-border);     /* Mobile nav border color */
   padding: 12px 0;                               /* Mobile nav padding */
 }
@@ -282,7 +282,7 @@ TITLE SECTION
 
 .hero {
   min-height: 100vh;                             /* Full screen height */
-  background: linear-gradient(135deg, #1a4f80 0%, #2c6fad 50%, #4a90d9 100%); /* Hero background gradient */
+  background: linear-gradient(135deg, #692925 0%, #833104 50%, #981a16 100%); /* Hero background gradient */
   display: flex;                                  /* Flexbox layout */
   align-items: center;                            /* Vertically center content */
   justify-content: center;                        /* Horizontally center content */
@@ -333,12 +333,12 @@ TITLE SECTION
 
 /* ============================================================
    ABOUT SECTION
-   White background section with three info cards.
+   red background section with three info cards.
 ============================================================ */
 
 .about {
   padding: 80px 0;                                  /* Vertical padding for the about section */
-  background-color: var(--color-white);             /* White background */
+  background-color: var(--color-secondary);             /* White background */
 }
 
 /* Three-column grid for about cards */
@@ -370,12 +370,18 @@ TITLE SECTION
   font-size: 2.8rem;                                /* Large icon size */
   margin-bottom: 16px;                              /* Space below icon */
 }
+.about .section-title {
+  font-size: 1.5rem;                                /* Section title font size */
+  font-weight: 700;                                 /* Section title font weight */
+  color: var(--color-primary);                  /* Section title color */
+  margin-bottom: 24px;                              /* Space below section title */
+}
 
 /* Card heading */
 .about-card h3 {
   font-size: 1.2rem;                                /* Card heading font size */
   font-weight: 700;                                 /* Card heading font weight */
-  color: var(--color-primary);                      /* Card heading color */
+  color: var(--color-primary-dark);                      /* Card heading color */
   margin-bottom: 12px;                              /* Space below heading */
 }
 
@@ -392,7 +398,14 @@ TITLE SECTION
 
 .why-join {
   padding: 80px 0;                          /* Vertical padding for the why join section */
-  background-color: var(--color-secondary); /* Light blue background */
+  background-color: var(--color-primary); /* Light blue background */
+}
+
+.why-join h2{
+    font-size: 1.2rem;                                /* Section subtitle font size */
+    font-weight: 600;                                 /* Section subtitle font weight */
+    color: var(--color-secondary);                  /* Section subtitle color */
+    margin-bottom: 16px;                              /* Space below section subtitle */
 }
 
 /* Grid of 6 benefit items — 3 columns on desktop */
@@ -481,7 +494,7 @@ TITLE SECTION
   gap: 14px;                                /* Space between items */
   padding: 20px 24px;                       /* Padding inside header */
   background: var(--color-white);           /* White background */
-  border: none;                             /* No border */
+  border: none;                            /* No border */
   cursor: pointer;                          /* Shows pointer cursor on hover */
   text-align: left;                         /* Align text to the left */
   font-size: 1.08rem;                       /* Font size for header */
@@ -490,6 +503,10 @@ TITLE SECTION
   transition: var(--transition);            /* Transition for header */
 }
 
+.support .section-subtitle{
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+}
 /* Header background when hovered */
 .accordion-header:hover {
   background-color: var(--color-secondary); /* Background color on hover */
@@ -574,7 +591,7 @@ TITLE SECTION
 
 .gallery {
   padding: 80px 0;              /* Vertical padding for gallery section */
-  background-color: var(--color-light-bg);              /* Light background color */
+  background-color: var(--color-secondary);              /* Light background color */
 }
 
 /* Outer wrapper — holds the arrows and the slide track side by side */
@@ -621,12 +638,12 @@ TITLE SECTION
 .photo-placeholder {
   width: 100%;                 /* Full width */
   height: 100%;                /* Full height */
-  background: linear-gradient(135deg, #c8ddf0 0%, #a8c8e8 100%);/* Background gradient */
+  background: linear-gradient(135deg, #692925 0%, #692925 100%);/* Background gradient */
   display: flex;               /* Flexbox layout for placeholder content */
   flex-direction: column;      /* Stack content vertically */
   align-items: center;         /* Center items horizontally */
   justify-content: center;     /* Center items vertically */
-  color: var(--color-primary); /* Text color for placeholder */
+  color: var(--color-secondary); /* Text color for placeholder */
   text-align: center;          /* Center text alignment */
   padding: 20px;               /* Padding inside the placeholder */
 }
@@ -659,8 +676,8 @@ TITLE SECTION
   height: 48px;                 /* Fixed height */
   border-radius: 50%;           /* Circular shape */
   border: none;                 /* No border */
-  background: var(--color-white);/* White background */
-  color: var(--color-primary);  /* Primary text color */
+  background: var(--color-primary);/* White background */
+  color: var(--color-secondary);  /* Primary text color */
   font-size: 2rem;              /* Large font size */
   line-height: 1;               /* Single line height */
   cursor: pointer;              /* Pointer cursor on hover */
@@ -723,7 +740,7 @@ TITLE SECTION
 
 .apply {
   padding: 80px 0;
-  background: linear-gradient(135deg, #2c6fad 0%, #1a4f80 100%);
+  background: linear-gradient(135deg, #7b240e 0%, #852e1a 100%);
 }
 
 /* Inner box with rounded corners and padding */
@@ -737,7 +754,7 @@ TITLE SECTION
 .apply-box h2 {
   font-size: clamp(1.6rem, 3vw, 2.2rem);/* Font size */
   font-weight: 700;                     /* Font weight */
-  color: var(--color-white);            /* Font color */
+  color: var(--color-secondary);            /* Font color */
   margin-bottom: 16px;                  /* Space below heading */
 }
 
@@ -894,14 +911,14 @@ TITLE SECTION
   color: rgba(255, 255, 255, 0.75);      /* Light text color */
   padding: 60px 0 0;                       /* Space above */
 }
-
+m
 /* Three-column footer grid */
 .footer-grid {
   display: grid;                            /* Grid layout */
   grid-template-columns: 2fr 1fr 1fr;       /* Brand column is wider */
   gap: 40px;                                /* Space between columns */
   padding-bottom: 40px;                     /* Space below */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);/* Subtle border */
+  border-bottom: 1px solid rgba(121, 44, 44, 0.204);/* Subtle border */
 }
 
 /* Footer organization name */
@@ -952,7 +969,7 @@ TITLE SECTION
   padding: 20px 0;                          /* Space above and below */
   text-align: center;                       /* Centered text */
   font-size: 0.85rem;                       /* Font size */
-  color: rgba(255, 255, 255, 0.45);       /* Light text color */
+  color: rgba(79, 78, 78, 0.45);       /* Light text color */
 }
 
 
