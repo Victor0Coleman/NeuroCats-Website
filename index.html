@@ -1,19 +1,630 @@
 <!DOCTYPE html>
 <html lang = "en">
 
-<!---<Head>
+<!--************************************************************************************
+-<Head>
   • (meta charset) tells the browser to use modern character encoding
   • Adjust screen size on phones to fit
   • Tab title
   • Links to css external file
-  -->
+************************************************************************************-->
 <head>
-  <meta charset= "UTF-8"/>
-  <meta name= "viewport" content= "width=device-width, initial-scale=1.0"/>
-  <title> NeuroCats </title>
-  <link rel= "stylesheet" href= "styles.css"/>
+    <meta charset= "UTF-8"/>
+    <meta name= "viewport" content= "width=device-width, initial-scale=1.0"/>
+    <title> NeuroCats </title>
+    <link rel= "stylesheet" href= "styles.css"/>
 </head>
 
 <body>
-</body>    
+<!--<Navigation Bar>
+   • Sticky bar at the top of the page.
+   • Clicking a link scrolls smoothly to that section.
+      -nav logo ->organization name.
+      -navigation links -> sections on the page.
+      -hamburger menu icon -> mobile navigation toggle.
+      -links - each href = "#sectionId" scrolls to that section of the screen.
+************************************************************************************-->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">NeuroCats Program</div>
+            <!-- Navigation links-->
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#why-join">Why Join</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#apply">Apply</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+<!--************************************************************************************
+<Hamburger button>
+             — Only shows on mobile screens so not really needed but
+                just in case for future use
+             - (dropdown menu)Hidden by default, shown when hamburger is clicked
+************************************************************************************ -->
+            <button class = "hamburger" id = "hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Dropdown menu(Mobile) -->
+        <ul class = "mobile-nav" id = "mobileNav">
+            <li><a href = "#home" onclick = "closeMobileNav()">Home</a></li>
+            <li><a href = "#about" onclick = "closeMobileNav()">About</a></li>
+            <li><a href = "#why-join" onclick = "closeMobileNav()">Why Join</a></li>
+            <li><a href = "#support" onclick = "closeMobileNav()">Support</a></li>
+            <li><a href = "#gallery" onclick = "closeMobileNav()">Gallery</a></li>
+            <li><a href = "#apply" onclick = "closeMobileNav()">Apply</a></li>
+            <li><a href = "#contact" onclick = "closeMobileNav()">Contact</a></li>
+        </ul>
+    </nav>
+<!-- *****************************************************************
+Section#1:(TITLE AREA):
+      Contains main headline
+        - Main Welcome headline
+        - Short tagline or subtitle below the main headline
+        - href Button that scrolls user down to the that section 
+        - (Viewbox)Decorative wave shape at the bottom of the title section
+***************************************************************** -->
+    <section class = "hero" id = "home">
+        <div class = "hero-content">
+            <!-- <headline> -->
+            <h1 class = "hero-title">Welcome to NeuroCats</h1>
+
+            <!-- <Short tagline>-->
+            <p class = "hero-subtitle"> 
+                NeuroCats is a student-driven program developed 
+                for and with neurodivergent students in mind.
+            </p>
+
+            <!-- <Button> scrolls the user down to the "about" section -->
+            <a href = "#gallery" class = "btn btn-primary">Learn More</a>
+        </div>
+
+        <!-- <Decorative wave shape> -->
+        <div class = "hero-wave">
+            <svg viewBox = "0 0 1440 80" fill = "none" xmlns = "http://www.w3.org/2000/svg">
+                <path d = "M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill = "#ffffff"/>
+            </svg>
+        </div>
+    </section>
+
+<!-- *****************************************************************
+    Section 2:(PHOTOS / GALLERY)
+    - Positioned between the title and "What We are About".
+    - Displays a grid of images showing the organization in action.
+    - Replace the src="" with real image file paths or URLs.-> going to 
+        update this later just a place holder for now.
+    - Each image should be responsive and maintain its aspect ratio.
+*****************************************************************-->
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Community in Action</h2>
+            <div class="section-underline"></div>
+            <p class="section-subtitle">Moments from our events, meetups, and community gatherings.</p>
+
+<!--*****************************************************************
+Going to include a slideshow for the images to swap b/w similar to the txst home page
+           - SLIDESHOW — One photo visible at a time.
+           - JavaScript in script.js drives the slide changes.
+
+           HOW TO ADD REAL PHOTOS:
+            (Will need to update this later potentially)
+                - Replace each <div class="photo-placeholder">...</div>
+                inside a .slide with an <img> tag, like:
+                <img src="event-photo.jpg" alt="Community Event" />
+
+            Contains:
+                - wrapper indicator - holds left arrow + slide track + right arrow.
+                - Generated dots — one per slide; clicking goes to that slide. Dots 
+                    are generated automatically by script.js
+                - Display label - showing the name of the current slide.
+            Slides:
+                - left arrow - calls goPrev() in script.js
+                - slide track - that keeps all slides in a horizontal line.
+                - SLIDE ROW - all slides in a horizontal line.script.js shifts this element left with translateX to change slides.
+                    id="slidesRow" is used by script.js to find this element.
+                - right arrow - calls goNext() in script.js
+                - slides 1-6
+*****************************************************************-->
+            <div class="slideshow-wrapper" id="slideshow">
+
+                <!-- <LEFT ARROW> -->
+                <button class="slideshow-arrow slideshow-arrow-prev"
+                    onclick="slideshowPrev()"
+                    aria-label="Previous slide">&#8249;
+                </button>
+
+                <!-- <SLIDE TRACK> -->
+                <div class="slideshow-track">
+                    <!-- <SLIDE ROW> -->
+                    <div class="slides-row" id="slidesRow">
+
+                        <!-- <Slide 1> -->
+                        <div class="slide" id="slide-0">
+                            <!-- Replace the placeholder below with: <img src="event.jpg" alt="Community Event" /> -->
+                            <div class="photo-placeholder">
+                                <span>&#128247;</span>
+                                <p>Community Event</p>
+                            </div>
+                        </div>
+
+                        <!-- <Slide 2> -->
+                        <div class="slide" id="slide-1">
+                            <div class="photo-placeholder">
+                                <span>&#128247;</span>
+                                <p>Support Circle</p>
+                            </div>
+                        </div>
+
+                        <!-- <Slide 3> -->
+                        <div class="slide" id="slide-2">
+                            <div class="photo-placeholder">
+                                <span>&#128247;</span>
+                                <p>Workshop Day</p>
+                            </div>
+                        </div>
+
+                        <!-- <Slide 4> -->
+                        <div class="slide" id="slide-3">
+                            <div class="photo-placeholder">
+                                <span>&#128247;</span>
+                                <p>Volunteer Day</p>
+                            </div>
+                        </div>
+
+                        <!-- <Slide 5>-->
+                        <div class="slide" id="slide-4">
+                            <div class="photo-placeholder">
+                                <span>&#128247;</span>
+                                <p>Annual Gathering</p>
+                            </div>
+                        </div>
+
+                        <!-- <Slide 6> -->
+                        <div class="slide" id="slide-5">
+                            <div class="photo-placeholder">
+                                <span>&#128247;</span>
+                                <p>Milestone Celebration</p>
+                            </div>
+                        </div>
+                    </div><!-- <end .slides-row> -->
+                </div><!-- <end .slideshow-track> -->
+
+                <!-- <RIGHT ARROW> -->
+                <button class="slideshow-arrow slideshow-arrow-next"
+                    onclick="slideshowNext()" aria-label="Next slide">&#8250;
+                </button>
+            </div><!-- <end .slideshow-wrapper> -->
+            <!-- <DOT INDICATORS> -->
+            <div class="slideshow-dots" id="slideshowDots"></div>
+
+            <!-- <Label> -->
+            <p class="slide-label" id="slideLabel">Community Event</p>
+        </div>
+    </section>
+<!-- *****************************************************************
+    SECTION 3: WHAT WE'RE ABOUT
+    Describes the mission and values of the organization.
+        - Three cards side by side, each with an icon, heading, and description.
+        - Icons can be simple emojis or placeholders for now.
+***************************************************************** -->
+
+    <section class="about" id="about">
+    <div class="container">
+      <!-- Section heading -->
+      <h2 class="section-title">What We're About</h2>
+      <!-- Decorative underline beneath the heading -->
+      <div class="section-underline"></div>
+        <!-- Three cards describing core values -->
+        <div class="about-grid">
+            <!-- Card 1: What we're about -->
+            <div class="about-card">
+                <!-- Icon representing this value -->
+                <div class="about-icon">&#127775;</div>
+                <h3></h3>
+                <p>
+                    NeuroCats embraces a neurodiversity approach 
+                    that centers the needs, ideas, and strengths 
+                    of neurodivergent students. All supports, services, 
+                    and programs are informed by student participants 
+                    and neurodiversity-affirming research. We offer 
+                    supports that focus on building community, improving 
+                    educational experiences, and promoting student success.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- *****************************************************************
+SECTION 3: WHY YOU SHOULD JOIN US
+    Highlights the benefits of joining the organization.
+    - Grid layout for benefits allows for easily stacking.
+    - Each benefit-item has an icon, a heading, and a short description.
+    - Default icon is a person emoji that represents the community but can be changed.
+***************************************************************** -->
+
+    <section class="why-join" id="why-join">
+        <div class="container">
+        <h2 class="section-title">Why You Should Join:</h2>
+        <div class="section-underline"></div>
+
+        <!-- Grid of benefit items -->
+        <div class="benefits-grid">
+
+            <!-- Benefit-item 1 -->
+            <div class="benefit-item">
+                <!-- Benefit-icon 1 -->
+                <div class="benefit-icon">&#128101;</div>
+                    <h3>Join a Community</h3>
+                    <p>Connect with like-minded individuals who share your values and goals.</p>
+            </div>
+
+            <!-- Benefit-item 2 -->
+            <div class="benefit-item">
+                <!-- Benefit-icon 2 -->
+                <div class="benefit-icon">&#128218;</div>
+                    <h3>Gain Support</h3>
+                    <p>
+                        Gain access to exclusive resources ranging 
+                        from educational to career based all tailored 
+                        to your unique needs.
+                    </p>
+            </div>
+
+            <!-- Benefit-item 3 -->
+            <div class="benefit-item">
+                <!-- Benefit-icon 3 -->
+                <div class="benefit-icon">&#128172;</div>
+                    <h3>Find Your Voice</h3>
+                    <p>Share your story in a safe space where you are heard and valued.</p>
+            </div>
+
+            <!-- Benefit-item 4 -->
+            <div class="benefit-item">
+                <!-- Benefit-icon 4 -->
+                <div class="benefit-icon">&#127881;</div>
+                    <h3>Celebrate Achievements</h3>
+                    <p>
+                        Join a community that supports you being you 
+                        and celebrates the progress and achievements you make.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- *****************************************************************
+    SECTION 4: TYPES OF SUPPORT
+        - Four support categories, each with a clickable dropdown.
+        - Clicking a card header reveals/hides details about that support type.
+        - The dropdown logic is controlled in script.js.
+        Container:
+              - The "accordion-item" class wraps each dropdown.
+              - The "accordion-header" is the clickable part.
+              - The "accordion-body" is hidden until clicked.
+***************************************************************** -->
+
+    <section class="support" id="support">
+        <div class="container">
+            <h2 class="section-title">Types of Support We Offer</h2>
+            <div class="section-underline"></div>
+                <p class="section-subtitle">Click on any support type below to learn more about it.</p>
+
+                <!-- Support accordion container -->
+                <div class="support-accordion">
+
+                    <!-- SUPPORT TYPE 1: Individualized Support -->
+                    <div class="accordion-item" id="support-1">
+                            <button class="accordion-header" onclick="toggleAccordion('support-1')" aria-expanded="false">
+                            <!-- Icon and label -->
+                            <span class="accordion-icon">&#128149;</span>
+                            <span class="accordion-label">Individualized Support</span>
+                            <!-- Arrow icon that rotates when open -->
+                            <span class="accordion-arrow">&#9660;</span>
+                        </button>
+                        <!-- Hidden content — shown when the header is clicked -->
+                        <div class="accordion-body" id="support-1-body">
+                            <div class="accordion-content">
+                                <p>
+                                    Neurocats offers Individualized supports 
+                                    through one-on-one and small group coaching. 
+                                    Students can choose to meet for one-on-one coaching 
+                                    weekly, Bi-monthly, or monthly depending on their 
+                                    support needs. Group coaching is offered two times per week.
+
+                                    Coaching topics address the seven domains of student success at TXST:
+                                </p>
+                                <ul>
+                                    <li>Academic Pathways</li>
+                                    <li>Career Related Engagement</li>
+                                    <li>Community Engagement</li>
+                                    <li>Individual Connections</li>
+                                    <li>Health & Well-Being</li>
+                                    <li>Positive Interdependence</li>
+                                    <li>Basic Needs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUPPORT TYPE 2: Social Engagement -->
+                    <div class="accordion-item" id="support-2">
+                        <button class="accordion-header" onclick="toggleAccordion('support-2')" aria-expanded="false">
+                            <span class="accordion-icon">&#129504;</span>
+                            <span class="accordion-label">Social Engagement</span>
+                            <span class="accordion-arrow">&#9660;</span>
+                        </button>
+
+                        <div class="accordion-body" id="support-2-body">
+                            <div class="accordion-content">
+                                <p>
+                                    Building a community is an essential part of NeuroCats. 
+                                    Multiple social events are scheduled each week to 
+                                    promote community engagement. Students participate 
+                                    in the brainstorming, planning, and facilitation of events. 
+                                
+                                    /Students are invited to engage at the level that feels most 
+                                    comfortable for them whether that means leading a discussion,  
+                                    contributing occasionally, or simply observing from the doorway.
+                                </p>
+                                <p>Examples of social events include:</p>
+                                <ul>
+                                    <li>Monthly UNO Tournament</li>
+                                    <li>Board Games</li>
+                                    <li>Coloring and Cat Videos</li>
+                                    <li>Art Space</li>
+                                    <li>Movies</li>
+                                    <p>Share your special interest.</p>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SUPPORT TYPE 3: Workshops-->
+                    <div class="accordion-item" id="support-3">
+                        <button class="accordion-header" onclick="toggleAccordion('support-3')" aria-expanded="false">
+                            <span class="accordion-icon">&#128176;</span>
+                            <span class="accordion-label">Workshops</span>
+                            <span class="accordion-arrow">&#9660;</span>
+                        </button>
+
+                        <div class="accordion-body" id="support-3-body">
+                            <div class="accordion-content">
+                                <p>
+                                    Monthly workshops are facilitated by campus and community experts 
+                                    based on the topics suggested by students. All workshops are open to the 
+                                    campus community.
+                                </p>
+                                <p>Example topics include:</p>
+                                <ul>
+                                    <li>Career Preparation</li>
+                                    <li>Study strategies and skills</li>
+                                    <li>Time management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+        <!-- SUPPORT TYPE 4: Professional Development -->
+                    <div class="accordion-item" id="support-4">
+                        <button class="accordion-header" onclick="toggleAccordion('support-4')" aria-expanded="false">
+                            <span class="accordion-icon">&#127968;</span>
+                            <span class="accordion-label">Professional Development</span>
+                            <span class="accordion-arrow">&#9660;</span>
+                        </button>
+                    
+                        <div class="accordion-body" id="support-4-body">
+                        <div class="accordion-content">
+                            <p>
+                                Customized presentations on supporting neurodivergent
+                                students are available upon request, with content adapted
+                                to best serve the audience's interest and objectives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--*****************************************************************
+    SECTION 5: APPLICATION LINK AREA
+    Directs visitors to apply / join the NeuroCats community.
+        - The button links to an external or internal application form.
+        - Replace the href="#" with the real URL of your application form.
+        - Short description explaining the link goes to a separate website.
+        - Application button — REPLACE "#" with the URL of your external application website.
+***************************************************************** -->
+    <section class="apply" id="apply">
+        <div class="container">
+            <div class="apply-box">
+                <!-- Heading -->
+                <h2>Ready to Apply?</h2>
+                <!-- Short description of link -->
+                <p>
+                    Clicking the button below will take you to our application website,
+                    where you can complete and submit your application.
+                </p>
+
+                <!-- Application button -->
+                <a href="https://txstate.co1.qualtrics.com/jfe/form/SV_6kTkgNceW94AbwG" class="btn btn-white" target="_blank" rel="noopener noreferrer">
+                Go to Application Site &#8594;
+                </a>
+
+                <!-- Opens separate website -->
+                <p class="apply-note">You will be taken to a separate website to complete your application.</p>
+            </div>
+        </div>
+    </section>
+<!--*****************************************************************
+    SECTION 7: CONTACT US
+    Provides ways for visitors to reach out to the organization.
+    - Two-column layout: contact info on left, form on right
+    - LEFT: Contact information 
+        - Email contact
+        - replace temp email with real email address
+        - Phone contact
+        - replace temp phone with real phone number
+        - Location and hours
+        - replace temp location with real location
+        - replace temp hours with real hours
+
+***************************************************************** -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="section-underline"></div>
+            <p class="section-subtitle">We'd love to hear from you. Reach out anytime.</p>
+
+            <!-- Two-column layout: -->
+            <div class="contact-grid">
+
+                 <!-- LEFT: Contact information -->
+                <div class="contact-info">
+
+                    <!-- Email contact -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128231;</div>
+                        <div>
+                            <h3>Email Us</h3>
+                            <!-- Replace with your real email address -->
+                            <p><a href="mailto:lori.e@txstate.edu">lori.e@txstate.edu</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Phone contact -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128222;</div>
+                        <div>
+                            <h3>Call Us</h3>
+                            <!-- Replace with your real phone number -->
+                            <p><a href="tel:+15122453451">(512) 245-3451</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128205;</div>
+                        <div>
+                            <h3>Find Us</h3>
+                            <!-- Replace with your real address -->
+                            <p>LBJ Student Center, Room 506<br />601 University Drive<br />San Marcos, TX 78666</p>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#128336;</div>
+                        <div>
+                            <h3>Office Hours</h3>
+                            <p>Monday – Friday: 8am – 6pm</p>
+                        </div>
+                    </div>
+
+                </div><!-- end .contact-info -->
+
+                <!-- RIGHT: Contact form -->
+                <!-- This form sends a message when submitted.
+                    To make it actually send emails, connect it to a backend service
+                    like Formspree (formspree.io) or EmailJS.
+                    For now it shows a success message via JavaScript. -->
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+
+                        <!-- Name field -->
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+                        </div>
+
+                        <!-- Email field -->
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+                        </div>
+
+                        <!-- Subject field -->
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="How can we help?" />
+                        </div>
+
+                        <!-- Message text area -->
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+                        <!-- Success message shown after form is submitted (hidden by default) -->
+                        <div class="form-success" id="formSuccess">
+                            <p>&#10003; Thank you! Your message has been received. We'll be in touch soon.</p>
+                        </div>
+
+                    </form>
+                </div><!-- end .contact-form-wrapper -->
+            </div><!-- end .contact-grid -->
+        </div>
+    </section>
+<!-- *****************************************************************
+    FOOTER
+        Bottom of the page — copyright notice and quick links.
+            - Footer branding for title
+            - Quick links connected to the sections
+            - Social media links (replace "#" with real URLs)
+
+***************************************************************** -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Footer branding -->
+                <div class="footer-brand">
+                    <h3>Our Organization</h3>
+                    <p>Building community, one connection at a time.</p>
+                </div>
+
+                <!-- Footer quick links -->
+                <div class="footer-links">
+                <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#support">Support</a></li>
+                        <li><a href="#apply">Apply</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footer social / extra info -->
+                <div class="footer-social">
+                    <h4>Follow Us on Social Media</h4>
+                    <!-- Replace "#" links with real social media URLs -->
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom copyright bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Our Organization. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<!-- *****************************************************************
+  JavaScript file linker
+    •Runs after html completely loads.
+*****************************************************************-->
+
+    <script src="script.js"></script>
+</body>
 </html>
