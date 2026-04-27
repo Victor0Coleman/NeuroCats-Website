@@ -1,8 +1,8 @@
 /* Adds CSS style to the website by linking to index.html
     * @author Victor Coleman
-***************************************************************************
+============================================================================
     SCRIPT.JS- All the interactive elements behavior for the website.
-***************************************************************************   
+============================================================================
    What this file controls:
         1. The sticky navbar (shrinks when you scroll)
         2. The hamburger menu (mobile navigation toggle)
@@ -10,7 +10,7 @@
         4. The accordion dropdowns in the Support section
         5. The contact form submission handling
         6. Scroll-based fade-in animations for sections
-***************************************************************************
+============================================================================
     How this Script.js file works:
         • It listens for user interactions (scrolling, clicking) and 
             updates the DOM accordingly.
@@ -47,14 +47,101 @@ var currentSlide = 0;
 
 /* Holds reference to auto-shift timer */
 var slideshowTimer = null;
-/*info*/
+/*
+ Horizontal slide animation:
+    Move the slides-row left by (newSlide * 100%)
+*/
 function initSlideshow() {
   /* Creates dot indicators dynamically to match each slide */
   buildSlideshowDots();
   /* Start the auto-shifter: moves to next slide every 4 seconds */
   startSlideshowTimer();
 }
-/*info*/
+
+/* Creates one dot button per slide inside #slideshowDots */
+function buildSlideshowDots() {
+  var dotsContainer = document.getElementById('slideshowDots');
+  if (!dotsContainer) return; // Safety check
+
+  dotsContainer.innerHTML = ''; // Clear any existing dots
+
+  for (var i = 0; i < SLIDE_COUNT; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' dot-active' : ''); // First dot is active
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + SLIDE_LABELS[i]);
+
+    /* Each dot captures its own index (i) via closure */
+    (function(index) {
+      dot.addEventListener('click', function () {
+        goToSlide(index);
+      });
+    })(i);
+
+    dotsContainer.appendChild(dot);
+  }
+}
+
+/* Moves the slideshow to a specific slide index */
+function goToSlide(index) {
+  /* Wrap around: if index < 0 go to last; if index >= count go to first */
+  var newSlide = (index + SLIDE_COUNT) % SLIDE_COUNT;
+
+  /*
+    Horizontal slide animation:
+    Move the slides-row left by (newSlide * 100%).
+    Because each slide is 100% wide, this puts the correct slide in view.
+    The CSS transition property on .slides-row makes the movement smooth.
+  */
+  var slidesRow = document.getElementById('slidesRow');
+  if (slidesRow) {
+    slidesRow.style.transform = 'translateX(-' + (newSlide * 100) + '%)';
+  }
+
+  /* Update the dot indicators — active dot gets the dot-active class */
+  var dots = document.querySelectorAll('.dot');
+  dots.forEach(function(dot, i) {
+    dot.classList.toggle('dot-active', i === newSlide);
+  });
+
+  /* Update the slide label text below the dots */
+  var label = document.getElementById('slideLabel');
+  if (label) label.textContent = SLIDE_LABELS[newSlide];
+
+  /* Save the new current index */
+  currentSlide = newSlide;
+}
+
+/* Goes to the previous slide (wraps from first to last) */
+function slideshowPrev() {
+  goToSlide(currentSlide - 1);
+  /* Reset timer so manual navigation doesn't immediately auto-advance */
+  restartSlideshowTimer();
+}
+
+/* Goes to the next slide (wraps from last to first) */
+function slideshowNext() {
+  goToSlide(currentSlide + 1);
+  /* Reset timer so manual navigation doesn't immediately auto-advance */
+  restartSlideshowTimer();
+}
+
+/* Starts the repeating auto-advance timer (every 4 seconds) */
+function startSlideshowTimer() {
+  slideshowTimer = setInterval(function () {
+    goToSlide(currentSlide + 1);
+  }, 4000);
+}
+
+/* Clears and restarts the auto-advance timer */
+function restartSlideshowTimer() {
+  clearInterval(slideshowTimer);
+  startSlideshowTimer();
+}
+/*============================================================================
+ FEATURE 1: NAVBAR SCROLL BEHAVIOR
+   Adds a "scrolled" class to the navbar when the user
+   scrolls down more than 50 pixels from the top.
+============================================================================*/
 function initNavbarScroll() {
   var navbar = document.getElementById('navbar');
 
@@ -69,7 +156,11 @@ function initNavbarScroll() {
     }
   });
 }
-/*info*/
+/*============================================================================
+FEATURE 2: HAMBURGER MOBILE MENU
+   Toggles the mobile navigation open/closed when the
+   hamburger icon (3 lines) is clicked on small screens.
+============================================================================*/
 function initHamburger() {
   var hamburger = document.getElementById('hamburger');
   var mobileNav = document.getElementById('mobileNav');
@@ -81,13 +172,21 @@ function initHamburger() {
     mobileNav.classList.toggle('open');
   });
 }
-/*info*/
+
+/*============================================================================
+Closes the mobile nav
+    - This prevents the menu from staying open after navigation.
+============================================================================*/
 function closeMobileNav() {
   var mobileNav = document.getElementById('mobileNav');
   mobileNav.classList.remove('open');
 }
 
-/*info*/
+/*============================================================================
+   FEATURE 3: ACCORDION DROPDOWNS (Support Section)
+   Toggles a support type open or closed when its header is clicked.
+        - itemId: the id of the accordion-item to toggle (e.g. "support-1")
+============================================================================*/
 function toggleAccordion(itemId) {
   // Find the clicked accordion item by its id
   var clickedItem = document.getElementById(itemId);
@@ -128,7 +227,11 @@ function toggleAccordion(itemId) {
   }
 }
 
-/*info*/
+/*============================================================================
+   FEATURE 4: CONTACT FORM SUBMISSION
+   Handles the contact form when the user clicks "Send Message."
+        - event: the form submit event (used to prevent page reload)
+============================================================================*/
 function handleFormSubmit(event) {
   // Prevent the page from reloading (default form behavior)
   event.preventDefault();
@@ -163,7 +266,11 @@ function handleFormSubmit(event) {
 
   }, 1200); // 1.2 second simulated delay
 }
-/**/
+/*============================================================================
+   FEATURE 5: SCROLL FADE-IN ANIMATIONS
+   Sections and cards fade in smoothly as the user scrolls
+   down the page, instead of appearing all at once.
+============================================================================*/
 function initScrollAnimations() {
   // List of elements to animate as they appear
   var animatedElements = document.querySelectorAll(

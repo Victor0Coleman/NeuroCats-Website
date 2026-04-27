@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang = "en">
 
-<!--************************************************************************************
--<Head>
+<!--============================================================================
+<Head>
   • (meta charset) tells the browser to use modern character encoding
   • Adjust screen size on phones to fit
   • Tab title
   • Links to css external file
-************************************************************************************-->
+============================================================================-->
 <head>
     <meta charset= "UTF-8"/>
     <meta name= "viewport" content= "width=device-width, initial-scale=1.0"/>
@@ -23,7 +23,7 @@
       -navigation links -> sections on the page.
       -hamburger menu icon -> mobile navigation toggle.
       -links - each href = "#sectionId" scrolls to that section of the screen.
-************************************************************************************-->
+=============================================================================-->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">NeuroCats Program</div>
@@ -62,14 +62,14 @@
             <li><a href = "#contact" onclick = "closeMobileNav()">Contact</a></li>
         </ul>
     </nav>
-<!-- *****************************************************************
+<!-- ============================================================================
 Section#1:(TITLE AREA):
       Contains main headline
         - Main Welcome headline
         - Short tagline or subtitle below the main headline
         - href Button that scrolls user down to the that section 
         - (Viewbox)Decorative wave shape at the bottom of the title section
-***************************************************************** -->
+============================================================================ -->
     <section class = "hero" id = "home">
         <div class = "hero-content">
             <!-- <headline> -->
@@ -93,14 +93,14 @@ Section#1:(TITLE AREA):
         </div>
     </section>
 
-<!-- *****************************************************************
+<!--============================================================================
     Section 2:(PHOTOS / GALLERY)
     - Positioned between the title and "What We are About".
     - Displays a grid of images showing the organization in action.
     - Replace the src="" with real image file paths or URLs.-> going to 
         update this later just a place holder for now.
     - Each image should be responsive and maintain its aspect ratio.
-*****************************************************************-->
+============================================================================-->
 
     <section class="gallery" id="gallery">
         <div class="container">
@@ -108,7 +108,7 @@ Section#1:(TITLE AREA):
             <div class="section-underline"></div>
             <p class="section-subtitle">Moments from our events, meetups, and community gatherings.</p>
 
-<!--*****************************************************************
+<!--============================================================================
 Going to include a slideshow for the images to swap b/w similar to the txst home page
            - SLIDESHOW — One photo visible at a time.
            - JavaScript in script.js drives the slide changes.
@@ -208,12 +208,12 @@ Going to include a slideshow for the images to swap b/w similar to the txst home
             <p class="slide-label" id="slideLabel">Community Event</p>
         </div>
     </section>
-<!-- *****************************************************************
+<!-- ============================================================================
     SECTION 3: WHAT WE'RE ABOUT
     Describes the mission and values of the organization.
         - Three cards side by side, each with an icon, heading, and description.
         - Icons can be simple emojis or placeholders for now.
-***************************************************************** -->
+============================================================================ -->
 
     <section class="about" id="about">
     <div class="container">
@@ -241,13 +241,13 @@ Going to include a slideshow for the images to swap b/w similar to the txst home
         </div>
     </section>
 
-<!-- *****************************************************************
+<!--============================================================================
 SECTION 3: WHY YOU SHOULD JOIN US
     Highlights the benefits of joining the organization.
     - Grid layout for benefits allows for easily stacking.
     - Each benefit-item has an icon, a heading, and a short description.
     - Default icon is a person emoji that represents the community but can be changed.
-***************************************************************** -->
+============================================================================ -->
 
     <section class="why-join" id="why-join">
         <div class="container">
@@ -299,7 +299,7 @@ SECTION 3: WHY YOU SHOULD JOIN US
         </div>
     </section>
 
-<!-- *****************************************************************
+<!-- ============================================================================
     SECTION 4: TYPES OF SUPPORT
         - Four support categories, each with a clickable dropdown.
         - Clicking a card header reveals/hides details about that support type.
@@ -308,7 +308,7 @@ SECTION 3: WHY YOU SHOULD JOIN US
               - The "accordion-item" class wraps each dropdown.
               - The "accordion-header" is the clickable part.
               - The "accordion-body" is hidden until clicked.
-***************************************************************** -->
+============================================================================-->
 
     <section class="support" id="support">
         <div class="container">
@@ -432,14 +432,14 @@ SECTION 3: WHY YOU SHOULD JOIN US
             </div>
         </div>
     </section>
-<!--*****************************************************************
+<!--============================================================================
     SECTION 5: APPLICATION LINK AREA
     Directs visitors to apply / join the NeuroCats community.
         - The button links to an external or internal application form.
         - Replace the href="#" with the real URL of your application form.
         - Short description explaining the link goes to a separate website.
         - Application button — REPLACE "#" with the URL of your external application website.
-***************************************************************** -->
+*============================================================================ -->
     <section class="apply" id="apply">
         <div class="container">
             <div class="apply-box">
@@ -461,7 +461,7 @@ SECTION 3: WHY YOU SHOULD JOIN US
             </div>
         </div>
     </section>
-<!--*****************************************************************
+<!--============================================================================
     SECTION 7: CONTACT US
     Provides ways for visitors to reach out to the organization.
     - Two-column layout: contact info on left, form on right
@@ -474,7 +474,7 @@ SECTION 3: WHY YOU SHOULD JOIN US
         - replace temp location with real location
         - replace temp hours with real hours
 
-***************************************************************** -->
+============================================================================ -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
@@ -573,14 +573,14 @@ SECTION 3: WHY YOU SHOULD JOIN US
             </div><!-- end .contact-grid -->
         </div>
     </section>
-<!-- *****************************************************************
+<!-- ============================================================================
     FOOTER
         Bottom of the page — copyright notice and quick links.
             - Footer branding for title
             - Quick links connected to the sections
             - Social media links (replace "#" with real URLs)
 
-***************************************************************** -->
+============================================================================ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -620,10 +620,10 @@ SECTION 3: WHY YOU SHOULD JOIN US
             </div>
         </div>
     </footer>
-<!-- *****************************************************************
+<!-- ============================================================================
   JavaScript file linker
     •Runs after html completely loads.
-*****************************************************************-->
+============================================================================ -->
 
     <script src="script.js"></script>
 </body>
